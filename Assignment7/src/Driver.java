@@ -13,6 +13,7 @@ public class Driver {
       BufferedImage image = ImageIO.read(new File(""));
       ImageHandling mod = new ImageModification(image);
       ImageHandling gen = new ImageGeneration();
+      
     } catch (IOException e) {
       e.printStackTrace();
     }

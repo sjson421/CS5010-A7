@@ -5,7 +5,22 @@ import java.awt.image.BufferedImage;
  */
 public class ImageModification extends AbstractImageHandling {
   BufferedImage image;
+
   public ImageModification(BufferedImage image) {
     this.image = image;
   }
+
+  public void blur() {
+
+  }
+
+  public void sharpen() {
+
+  }
+//  public void greyscale() {
+//
+//  }
+//  public void sepia() {
+//
+//  }
 }
