@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="582b8b1f-89e9-4f57-8db7-e765247aea5b" name="Default Changelist" comment="" />
+    <list default="true" id="582b8b1f-89e9-4f57-8db7-e765247aea5b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/CS5010-A7.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS5010-A7.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment7/src/ImageGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment7/src/ImageGeneration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment7/src/ImageHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment7/src/ImageHandling.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +39,20 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Driver" />
+      <module name="CS5010-A7" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Driver" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -44,6 +64,9 @@
       <option name="presentableId" value="Default" />
       <updated>1573075319690</updated>
       <workItem from="1573075320846" duration="17000" />
+      <workItem from="1573075662534" duration="5639000" />
+      <workItem from="1573142205521" duration="45000" />
+      <workItem from="1573153865529" duration="2155000" />
     </task>
     <servers />
   </component>
@@ -55,7 +78,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
