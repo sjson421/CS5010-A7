@@ -9,6 +9,14 @@ import javax.imageio.ImageIO;
  * image handling.
  */
 public abstract class AbstractImageHandling implements ImageHandling {
+  @Override
+  public void createImage(Enum creationType) {
+  }
+
+  @Override
+  public void createImage(Enum creationType, int width, int height, FlagType flagType) {
+  }
+
   /**
    * Clamps the given channel value according to a given min and max.
    *
@@ -21,19 +29,9 @@ public abstract class AbstractImageHandling implements ImageHandling {
   protected int clamp(int value, int min, int max) {
     if (value < min) {
       return min;
-    } else if (value > max) {
-      return max;
-    } else {
-      return value;
-    }
+    } else return Math.min(value, max);
   }
 
-  /**
-   * Saves the provided image into the res folder.
-   *
-   * @param image Image to save
-   * @throws IOException Thrown when the output path is not a jpg file
-   */
   protected void saveImage(BufferedImage image, String outputPath) throws IOException {
     File outputFile = new File(outputPath);
     ImageIO.write(image, "jpg", outputFile);
