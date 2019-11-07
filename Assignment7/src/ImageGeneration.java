@@ -23,63 +23,58 @@ public class ImageGeneration extends AbstractImageHandling {
   }
 
   private BufferedImage horRainbowStripes(int width, int height) {
-    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < height; i++) { //rows
       for (int j = 0; j < width; j++) { //columns
-        int alpha = 255;
         int red = 148;
         int green = 0;
         int blue = 211;
 
-        int pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int pixel = (red << 16) | (green << 8) | blue;
 
         img.setRGB(j, i, pixel);
       }
     }
     for (int i = height / 7; i < (2 * height) / 7; i++) { //rows
       for (int j = 0; j < width; j++) {//columns
-        int alpha = 255;
         int red = 75;
         int green = 0;
         int blue = 130;
 
-        int pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int pixel = (red << 16) | (green << 8) | blue;
 
         img.setRGB(j, i, pixel);
       }
     }
     for (int y = (2 * height) / 7; y < (3 * height) / 7; y++) {
       for (int x = 0; x < width; x++) {
-        int alpha = 255;
         int red = 0;
         int green = 0;
         int blue = 255;
 
-        int pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int pixel = (red << 16) | (green << 8) | blue;
 
         img.setRGB(x, y, pixel);
       }
     }
     for (int y = (3 * height) / 7; y < (4 * height) / 7; y++) {
       for (int x = 0; x < width; x++) {
-        int alpha = 255;
         int red = 0;
         int green = 255;
         int blue = 0;
 
-        int pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int pixel = (red << 16) | (green << 8) | blue;
 
         img.setRGB(x, y, pixel);
       }
     }
     for (int y = (4 * height) / 7; y < (5 * height) / 7; y++) {
       for (int x = 0; x < width; x++) {
-        int alpha = 255;
         int red = 255;
         int green = 255;
         int blue = 0;
 
-        int pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int pixel = (red << 16) | (green << 8) | blue;
 
         img.setRGB(x, y, pixel);
       }
@@ -87,12 +82,11 @@ public class ImageGeneration extends AbstractImageHandling {
 
     for (int y = (5 * height) / 7; y < (6 * height) / 7; y++) { //Orange
       for (int x = 0; x < width; x++) {
-        int alpha = 255;
         int red = 255;
         int green = 127;
         int blue = 0;
 
-        int pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int pixel = (red << 16) | (green << 8) | blue;
 
         img.setRGB(x, y, pixel);
       }
@@ -100,12 +94,11 @@ public class ImageGeneration extends AbstractImageHandling {
 
     for (int y = (6 * height) / 7; y < height; y++) { //Red
       for (int x = 0; x < width; x++) {
-        int alpha = 255;
         int red = 255;
         int green = 0;
         int blue = 0;
 
-        int pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int pixel = (red << 16) | (green << 8) | blue;
 
         img.setRGB(x, y, pixel);
       }
