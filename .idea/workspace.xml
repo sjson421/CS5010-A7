@@ -2,11 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="582b8b1f-89e9-4f57-8db7-e765247aea5b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CS5010-A7.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS5010-A7.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/AbstractImageHandling.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/Driver.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/FilterType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/FlagType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/GenerationType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/ImageGeneration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/ImageHandling.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/out/production/Assignment7/ImageModification.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/res/landscapeBlur.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/res/typical.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment7/res/typicalBlur.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment7/out/production/CS5010-A7/ImageHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment7/out/production/CS5010-A7/ImageHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment7/res/building.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment7/src/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment7/src/Driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment7/src/ImageGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment7/src/ImageGeneration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment7/src/ImageHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment7/src/ImageHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment7/src/ImageModification.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment7/src/ImageModification.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +36,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment7" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -66,7 +81,7 @@
       <workItem from="1573075320846" duration="17000" />
       <workItem from="1573075662534" duration="5639000" />
       <workItem from="1573142205521" duration="45000" />
-      <workItem from="1573153865529" duration="2155000" />
+      <workItem from="1573153865529" duration="2916000" />
     </task>
     <servers />
   </component>
