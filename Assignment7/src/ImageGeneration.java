@@ -9,18 +9,20 @@ public class ImageGeneration extends AbstractImageHandling {
   @Override
   public void createImage(Enum creationType, int width, int height,
                           FlagType flagType, String outputPath) throws IOException {
+    BufferedImage created = null;
     if (creationType == GenerationType.HOR_RAINBOW_STRIPES) {
-      horRainbowStripes(width, height, outputPath);
+      created = horRainbowStripes(width, height);
     } else if (creationType == GenerationType.VERT_RAINBOW_STRIPES) {
-      vertRainbowStripes(width, height, outputPath);
+      created = vertRainbowStripes(width, height);
     } else if (creationType == GenerationType.CHECKERBOARD) {
-      checkerboard(width, height, outputPath);
+      created = checkerboard(width, height);
     } else if (creationType == GenerationType.FLAG) {
-      generateFlag(width, flagType, outputPath);
+      created = generateFlag(width, flagType);
     }
+    saveImage(created, outputPath);
   }
 
-  private void horRainbowStripes(int width, int height, String outputPath) throws IOException {
+  private BufferedImage horRainbowStripes(int width, int height) {
     BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
     for (int i = 0; i < height; i++) { //rows
       for (int j = 0; j < width; j++) { //columns
@@ -108,17 +110,18 @@ public class ImageGeneration extends AbstractImageHandling {
         img.setRGB(x, y, pixel);
       }
     }
-    saveImage(img, outputPath);
+    return img;
   }
 
-  private void vertRainbowStripes(int width, int height, String outputPath) {
+  private BufferedImage vertRainbowStripes(int width, int height) {
+    return null;
   }
 
-  private void checkerboard(int squareWidth, int squareHeight, String outputPath) {
-
+  private BufferedImage checkerboard(int squareWidth, int squareHeight) {
+    return null;
   }
 
-  private void generateFlag(int width, FlagType flagType, String outputPath) {
+  private BufferedImage generateFlag(int width, FlagType flagType) {
     if (flagType == FlagType.FRANCE) {
 
     } else if (flagType == FlagType.GREECE) {
@@ -126,5 +129,6 @@ public class ImageGeneration extends AbstractImageHandling {
     } else if (flagType == FlagType.SWITZERLAND) {
 
     }
+    return null;
   }
 }

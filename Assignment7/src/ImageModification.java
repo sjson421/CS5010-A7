@@ -9,7 +9,6 @@ public class ImageModification extends AbstractImageHandling {
   private int width;
   private int height;
   private static final int RBG_LEN = 3;
-  private static final int ALPHA = 255;
 
   public ImageModification(BufferedImage image) {
     this.image = image;
@@ -20,21 +19,23 @@ public class ImageModification extends AbstractImageHandling {
   @Override
   public void createImage(Enum creationType, int width, int height,
                           FlagType flagType, String outputPath) throws IOException {
+    BufferedImage created = null;
     if (creationType == FilterType.BLUR) {
-      blur(outputPath);
+      created = blur();
     } else if (creationType == FilterType.SHARPEN) {
-      sharpen(outputPath);
+      created = sharpen();
     } else if (creationType == FilterType.GREYSCALE) {
-      greyscale(outputPath);
+      created = greyscale();
     } else if (creationType == FilterType.SEPIA) {
-      sepia(outputPath);
+      created = sepia();
     }
+    saveImage(created, outputPath);
   }
 
-  private void blur(String outputPath) throws IOException {
+  private BufferedImage blur() {
     BufferedImage returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     double[][] filter = createBlurFilter();
-    saveImage(applyFilter(returnImage, filter), outputPath);
+    return applyFilter(returnImage, filter);
   }
 
   private double[][] createBlurFilter() {
@@ -53,8 +54,9 @@ public class ImageModification extends AbstractImageHandling {
     return filter;
   }
 
-  private void sharpen(String outputPath) {
+  private BufferedImage sharpen() {
     double[][] filter = createSharpenFilter();
+    return null;
   }
 
   private double[][] createSharpenFilter() {
@@ -73,12 +75,12 @@ public class ImageModification extends AbstractImageHandling {
     return filter;
   }
 
-  private void greyscale(String outputPath) {
-    //int grey = (data[x][y][0]<<24) + (avg<<16) + (avg<<8) + avg;
+  private BufferedImage greyscale() {
+    return null;
   }
 
-  private void sepia(String outputPath) {
-
+  private BufferedImage sepia() {
+    return null;
   }
 
   private BufferedImage applyFilter(BufferedImage returnImage, double[][] filter) {
