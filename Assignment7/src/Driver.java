@@ -39,7 +39,7 @@ public class Driver {
   }
 
   private static void createImage(ImageHandling imageHandling, Enum creationType) {
-    imageHandling.createImage(creationType);
+    imageHandling.createImage(creationType, 0, 0, null);
   }
 
   private static void createImage(ImageHandling imageHandling, Enum creationType,

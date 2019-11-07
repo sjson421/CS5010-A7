@@ -5,21 +5,14 @@ import java.awt.image.BufferedImage;
  */
 public interface ImageHandling {
   /**
-   * Creates an image based on the creation type given.
+   * Creates an image based on the creation type given. Not all parameters are necessarily used in
+   * all scenarios.
    *
    * @param creationType The type of operation to perform. For instance, to modify an image, you can
    *                     choose "blur", "sharpen", etc.
-   */
-  void createImage(Enum creationType);
-
-  /**
-   * Creates an image based on the creation type given. Used in image generation to generate an
-   * image with given parameters.
-   *
-   * @param creationType
-   * @param width
-   * @param height
-   * @param flagType
+   * @param width        Width of a checkerbox or the image.
+   * @param height       Height of a checkerbox or the image.
+   * @param flagType     If creationType is a flag, the flag's country name.
    */
   void createImage(Enum creationType, int width, int height, FlagType flagType);
 }

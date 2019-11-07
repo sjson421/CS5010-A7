@@ -9,14 +9,6 @@ import javax.imageio.ImageIO;
  * image handling.
  */
 public abstract class AbstractImageHandling implements ImageHandling {
-  @Override
-  public void createImage(Enum creationType) {
-  }
-
-  @Override
-  public void createImage(Enum creationType, int width, int height, FlagType flagType) {
-  }
-
   /**
    * Clamps the given channel value according to a given min and max.
    *

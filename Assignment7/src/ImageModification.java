@@ -12,7 +12,7 @@ public class ImageModification extends AbstractImageHandling {
   }
 
   @Override
-  public void createImage(Enum creationType) {
+  public void createImage(Enum creationType, int width, int height, FlagType flagType) {
     if (creationType == FilterType.BLUR) {
       blur();
     } else if (creationType == FilterType.SHARPEN) {
