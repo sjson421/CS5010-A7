@@ -38,42 +38,10 @@ public class ImageModification extends AbstractImageHandling {
     return applyFilter(returnImage, filter);
   }
 
-  private double[][] createBlurFilter() {
-    double[][] filter = new double[3][3];
-    for (int y = 0; y < filter.length; y++) {
-      for (int x = 0; x < filter[y].length; x++) {
-        if (y == 1 && x == 1) {
-          filter[y][x] = 1 / 4.0;
-        } else if (y == 1 || x == 1) {
-          filter[y][x] = 1 / 8.0;
-        } else {
-          filter[y][x] = 1 / 16.0;
-        }
-      }
-    }
-    return filter;
-  }
-
   private BufferedImage sharpen() {
     BufferedImage returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     double[][] filter = createSharpenFilter();
     return applyFilter(returnImage, filter);
-  }
-
-  private double[][] createSharpenFilter() {
-    double[][] filter = new double[5][5];
-    for (int y = 0; y < filter.length; y++) {
-      for (int x = 0; x < filter[y].length; x++) {
-        if (y == 0 || x == 0) {
-          filter[y][x] = -1 / 8.0;
-        } else if (y == 1 || x == 1) {
-          filter[y][x] = 1 / 4.0;
-        } else {
-          filter[y][x] = 1;
-        }
-      }
-    }
-    return filter;
   }
 
   private BufferedImage greyscale() {
@@ -91,8 +59,8 @@ public class ImageModification extends AbstractImageHandling {
       for (int j = 0; j < width; j++) {
         int[] filterSum = new int[RBG_LEN];
         for (int k = 0; k < RBG_LEN; k++) {
-          for (int l = -filterHalfLen; l < filterHalfLen; l++) {
-            for (int m = -filterHalfLen; m < filterHalfLen; m++) {
+          for (int l = -filterHalfLen; l < filterHalfLen + 1; l++) {
+            for (int m = -filterHalfLen; m < filterHalfLen + 1; m++) {
               int pixelUsedX = j + m;
               int pixelUsedY = i + l;
 
@@ -112,6 +80,39 @@ public class ImageModification extends AbstractImageHandling {
       }
     }
     return returnImage;
+  }
+
+
+  private double[][] createBlurFilter() {
+    double[][] filter = new double[3][3];
+    for (int y = 0; y < filter.length; y++) {
+      for (int x = 0; x < filter[y].length; x++) {
+        if (y == 1 && x == 1) {
+          filter[y][x] = 1 / 4.0;
+        } else if (y == 1 || x == 1) {
+          filter[y][x] = 1 / 8.0;
+        } else {
+          filter[y][x] = 1 / 16.0;
+        }
+      }
+    }
+    return filter;
+  }
+
+  private double[][] createSharpenFilter() {
+    double[][] filter = new double[5][5];
+    for (int y = 0; y < filter.length; y++) {
+      for (int x = 0; x < filter[y].length; x++) {
+        if (y == 0 || x == 0 || y == filter.length - 1 || x == filter[y].length - 1) {
+          filter[y][x] = -1 / 8.0;
+        } else if (y == 1 || x == 1 || y == 3 || x == 3) {
+          filter[y][x] = 1 / 4.0;
+        } else {
+          filter[y][x] = 1;
+        }
+      }
+    }
+    return filter;
   }
 
   private int[] getRGBForPixel(int x, int y) {
