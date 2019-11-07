@@ -55,8 +55,9 @@ public class ImageModification extends AbstractImageHandling {
   }
 
   private BufferedImage sharpen() {
+    BufferedImage returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     double[][] filter = createSharpenFilter();
-    return null;
+    return applyFilter(returnImage, filter);
   }
 
   private double[][] createSharpenFilter() {
@@ -95,18 +96,19 @@ public class ImageModification extends AbstractImageHandling {
               int pixelUsedX = j + m;
               int pixelUsedY = i + l;
 
-              if (pixelUsedX >= 0 && pixelUsedY >= 0) {
+              if (pixelUsedX >= 0 && pixelUsedY >= 0 && pixelUsedX < width
+                      && pixelUsedY < height) {
                 int[] rgbProduct = getRGBForPixel(pixelUsedX, pixelUsedY);
                 filterSum[k] += rgbProduct[k] * filter[m + filterHalfLen][l + filterHalfLen];
               }
             }
           }
         }
-        int r = filterSum[0];
-        int g = filterSum[1];
-        int b = filterSum[2];
+        int r = clamp(filterSum[0], 0, 255);
+        int g = clamp(filterSum[1], 0, 255);
+        int b = clamp(filterSum[2], 0, 255);
         int rgb = (r << 16) | (g << 8) | b;
-        returnImage.setRGB(j, i, clamp(rgb, 0, 255));
+        returnImage.setRGB(j, i, rgb);
       }
     }
     return returnImage;
