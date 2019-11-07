@@ -25,7 +25,9 @@ public abstract class AbstractImageHandling implements ImageHandling {
   }
 
   protected void saveImage(BufferedImage image, String outputPath) throws IOException {
-    File outputFile = new File(outputPath);
-    ImageIO.write(image, "jpg", outputFile);
+    if (image != null) {
+      File outputFile = new File(outputPath);
+      ImageIO.write(image, "jpg", outputFile);
+    }
   }
 }
