@@ -2,7 +2,7 @@
  * Class for generating an image, depending on the method called. Does not require an argument image
  * to generate.
  */
-public class ImageGenerationFactory extends AbstractImageHandling {
+public class ImageGeneration extends AbstractImageHandling {
 
   @Override
   public void createImage(Enum creationType, int width, int height, FlagType flagType) {

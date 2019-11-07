@@ -3,11 +3,11 @@ import java.awt.image.BufferedImage;
 /**
  * Class for modifying a given image. Requires an argument image to modify.
  */
-public class ImageModificationFactory extends AbstractImageHandling {
+public class ImageModification extends AbstractImageHandling {
   BufferedImage image;
   double[][] filter;
 
-  public ImageModificationFactory(BufferedImage image) {
+  public ImageModification(BufferedImage image) {
     this.image = image;
   }
 

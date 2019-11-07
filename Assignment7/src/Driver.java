@@ -12,9 +12,9 @@ public class Driver {
     try {
       BufferedImage image1 = ImageIO.read(new File("res/building.jpg"));
       BufferedImage image2 = ImageIO.read(new File("res/landscape.jpg"));
-      ImageHandling mod1 = new ImageModificationFactory(image1);
-      ImageHandling mod2 = new ImageModificationFactory(image2);
-      ImageHandling gen = new ImageGenerationFactory();
+      ImageHandling mod1 = new ImageModification(image1);
+      ImageHandling mod2 = new ImageModification(image2);
+      ImageHandling gen = new ImageGeneration();
 
       createImage(mod1, FilterType.BLUR);
       createImage(mod1, FilterType.SHARPEN);
