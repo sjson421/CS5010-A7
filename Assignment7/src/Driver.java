@@ -1,6 +1,8 @@
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
@@ -8,13 +10,21 @@ import javax.imageio.ImageIO;
  * Driver class for running main method.
  */
 public class Driver {
+  /**
+   * Main method, taking the place of a controller. Runs all methods of the models.
+   *
+   * @param args No arguments required to run.
+   */
   public static void main(String[] args) {
     try {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       BufferedImage image1 = ImageIO.read(new File("./res/typical.jpg"));
       BufferedImage image2 = ImageIO.read(new File("./res/landscape.jpg"));
       ImageHandling mod1 = new ImageModification(image1);
       ImageHandling mod2 = new ImageModification(image2);
       ImageHandling gen = new ImageGeneration();
+      int width;
+      int height;
 
       createImage(mod1, FilterType.BLUR, "./res/typicalBlur.jpg");
       createImage(mod1, FilterType.SHARPEN, "./res/typicalSharpen.jpg");
@@ -26,14 +36,33 @@ public class Driver {
       createImage(mod2, FilterType.GREYSCALE, "./res/landscapeGreyScale.jpg");
       createImage(mod2, FilterType.SEPIA, "./res/landscapeSepia.jpg");
 
-      File d = new File("./");
-      System.out.println(d.getAbsolutePath());
-      createImage(gen, GenerationType.HOR_RAINBOW_STRIPES, 1280, 720, "./res/horRainbowStripes.jpg");
-      createImage(gen, GenerationType.VERT_RAINBOW_STRIPES, 1280, 720, "./res/vertRainbowStripes.jpg");
-      createImage(gen, GenerationType.CHECKERBOARD, 100, "./res/checkerboard.jpg");
-      createImage(gen, GenerationType.FLAG, FlagType.FRANCE, 1280, "./res/flagFrance.jpg");
-      createImage(gen, GenerationType.FLAG, FlagType.GREECE, 1280, "./res/flagGreece.jpg");
-      createImage(gen, GenerationType.FLAG, FlagType.SWITZERLAND, 1280, "./res/flagSwitzerland.jpg");
+      System.out.println("Enter horizontal rainbow width:");
+      width = Integer.parseInt(br.readLine());
+      System.out.println("Enter horizontal rainbow height:");
+      height = Integer.parseInt(br.readLine());
+      createImage(gen, GenerationType.HOR_RAINBOW_STRIPES, width, height, "./res/horRainbowStripes.jpg");
+
+      System.out.println("Enter vertical rainbow width:");
+      width = Integer.parseInt(br.readLine());
+      System.out.println("Enter vertical rainbow height:");
+      height = Integer.parseInt(br.readLine());
+      createImage(gen, GenerationType.VERT_RAINBOW_STRIPES, width, height, "./res/vertRainbowStripes.jpg");
+
+      System.out.println("Enter checkerboard square size:");
+      width = Integer.parseInt(br.readLine());
+      createImage(gen, GenerationType.CHECKERBOARD, width, "./res/checkerboard.jpg");
+
+      System.out.println("Enter France's flag width:");
+      width = Integer.parseInt(br.readLine());
+      createImage(gen, GenerationType.FLAG, FlagType.FRANCE, width, "./res/flagFrance.jpg");
+
+      System.out.println("Enter Greece's flag width:");
+      width = Integer.parseInt(br.readLine());
+      createImage(gen, GenerationType.FLAG, FlagType.GREECE, width, "./res/flagGreece.jpg");
+
+      System.out.println("Enter Switzerland's flag width:");
+      width = Integer.parseInt(br.readLine());
+      createImage(gen, GenerationType.FLAG, FlagType.SWITZERLAND, width, "./res/flagSwitzerland.jpg");
 
     } catch (IOException e) {
       e.printStackTrace();
