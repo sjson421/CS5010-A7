@@ -24,136 +24,82 @@ public class ImageGeneration extends AbstractImageHandling {
 
   private BufferedImage horRainbowStripes(int width, int height) {
     BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    int red;
-    int green;
-    int blue;
-    int pixel;
-
-    for (int i = 0; i < height; i++) { //rows
-      for (int j = 0; j < width; j++)  //columns
-
-        if (i < height / 7) { //color it red
-          red = 255;
-          green = 0;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
-
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        if (i < height / 7) {
+          colorRed(img, j, i);
         } else if (i < 2 * height / 7) {
-          //color it orange
-          red = 255;
-          green = 127;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorOrange(img, j, i);
         } else if (i < 3 * height / 7) {
-          //color it yellow
-          red = 255;
-          green = 255;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorYellow(img, j, i);
         } else if (i < 4 * height / 7) {
-          //color it green
-          red = 0;
-          green = 255;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-
-          img.setRGB(j, i, pixel);
+          colorGreen(img, j, i);
         } else if (i < 5 * height / 7) {
-          //color it blue
-          red = 0;
-          green = 0;
-          blue = 255;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorBlue(img, j, i);
         } else if (i < 6 * height / 7) {
-          //color it indigo
-          red = 75;
-          green = 0;
-          blue = 130;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorIndigo(img, j, i);
         } else {
-          //color it violet
-          red = 143;
-          green = 0;
-          blue = 255;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorViolet(img, j, i);
         }
+      }
     }
     return img;
   }
 
   private BufferedImage vertRainbowStripes(int width, int height) {
     BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    int red;
-    int green;
-    int blue;
-    int pixel;
-
-    for (int i = 0; i < height; i++) { //rows
-      for (int j = 0; j < width; j++)  //columns
-
-        if (j < width / 7) { //color it red
-          red = 255;
-          green = 0;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
-
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++)
+        if (j < width / 7) {
+          colorRed(img, j, i);
         } else if (j < 2 * width / 7) {
-          //color it orange
-          red = 255;
-          green = 127;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorOrange(img, j, i);
         } else if (j < 3 * width / 7) {
-          //color it yellow
-          red = 255;
-          green = 255;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorYellow(img, j, i);
         } else if (j < 4 * width / 7) {
-          //color it green
-          red = 0;
-          green = 255;
-          blue = 0;
-          pixel = (red << 16) | (green << 8) | blue;
-
-          img.setRGB(j, i, pixel);
+          colorGreen(img, j, i);
         } else if (j < 5 * width / 7) {
-          //color it blue
-          red = 0;
-          green = 0;
-          blue = 255;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorBlue(img, j, i);
         } else if (j < 6 * width / 7) {
-          //color it indigo
-          red = 75;
-          green = 0;
-          blue = 130;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorIndigo(img, j, i);
         } else {
-          //color it violet
-          red = 143;
-          green = 0;
-          blue = 255;
-          pixel = (red << 16) | (green << 8) | blue;
-          img.setRGB(j, i, pixel);
+          colorViolet(img, j, i);
         }
     }
     return img;
   }
 
+  private void colorRed(BufferedImage img, int j, int i) {
+    img.setRGB(j, i, 255 << 16);
+  }
+
+  private void colorOrange(BufferedImage img, int j, int i) {
+    img.setRGB(j, i, (255 << 16) | (128 << 8));
+  }
+
+  private void colorYellow(BufferedImage img, int j, int i) {
+    img.setRGB(j, i, (255 << 16) | (255 << 8));
+  }
+
+  private void colorGreen(BufferedImage img, int j, int i) {
+    img.setRGB(j, i, 255 << 8);
+  }
+
+  private void colorBlue(BufferedImage img, int j, int i) {
+    img.setRGB(j, i, 255);
+  }
+
+  private void colorIndigo(BufferedImage img, int j, int i) {
+    img.setRGB(j, i, (75 << 16) | 130);
+  }
+
+  private void colorViolet(BufferedImage img, int j, int i) {
+    img.setRGB(j, i, (148 << 16) | 211);
+  }
+
   private BufferedImage checkerboard(int squareWidth) {
-    BufferedImage img = new BufferedImage(squareWidth * 8, squareWidth * 8, BufferedImage.TYPE_INT_RGB);
+    BufferedImage img = new BufferedImage(squareWidth * 8, squareWidth * 8,
+            BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < squareWidth * 8; i++) {
       for (int j = 0; j < squareWidth * 8; j++) {
         if (i < squareWidth) {

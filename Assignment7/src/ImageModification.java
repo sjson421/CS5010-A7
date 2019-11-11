@@ -10,6 +10,10 @@ public class ImageModification extends AbstractImageHandling {
   private int height;
   private static final int RBG_LEN = 3;
 
+  /**
+   * Takes in the image to modify and sets according variables according to it.
+   * @param image Image to modify.
+   */
   public ImageModification(BufferedImage image) {
     this.image = image;
     this.width = image.getWidth();

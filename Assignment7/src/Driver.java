@@ -40,36 +40,43 @@ public class Driver {
       width = Integer.parseInt(br.readLine());
       System.out.println("Enter horizontal rainbow height:");
       height = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.HOR_RAINBOW_STRIPES, width, height, "./res/horRainbowStripes.jpg");
+      createImage(gen, GenerationType.HOR_RAINBOW_STRIPES, width, height,
+              "./res/horRainbowStripes.jpg");
 
       System.out.println("Enter vertical rainbow width:");
       width = Integer.parseInt(br.readLine());
       System.out.println("Enter vertical rainbow height:");
       height = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.VERT_RAINBOW_STRIPES, width, height, "./res/vertRainbowStripes.jpg");
+      createImage(gen, GenerationType.VERT_RAINBOW_STRIPES, width, height,
+              "./res/vertRainbowStripes.jpg");
 
       System.out.println("Enter checkerboard square size:");
       width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.CHECKERBOARD, width, "./res/checkerboard.jpg");
+      createImage(gen, GenerationType.CHECKERBOARD, width,
+              "./res/checkerboard.jpg");
 
       System.out.println("Enter France's flag width:");
       width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.FLAG, FlagType.FRANCE, width, "./res/flagFrance.jpg");
+      createImage(gen, GenerationType.FLAG, FlagType.FRANCE, width,
+              "./res/flagFrance.jpg");
 
       System.out.println("Enter Greece's flag width:");
       width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.FLAG, FlagType.GREECE, width, "./res/flagGreece.jpg");
+      createImage(gen, GenerationType.FLAG, FlagType.GREECE, width,
+              "./res/flagGreece.jpg");
 
       System.out.println("Enter Switzerland's flag width:");
       width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.FLAG, FlagType.SWITZERLAND, width, "./res/flagSwitzerland.jpg");
+      createImage(gen, GenerationType.FLAG, FlagType.SWITZERLAND, width,
+              "./res/flagSwitzerland.jpg");
 
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  private static void createImage(ImageHandling imageHandling, Enum creationType, String outputPath) throws IOException {
+  private static void createImage(ImageHandling imageHandling, Enum creationType,
+                                  String outputPath) throws IOException {
     imageHandling.createImage(creationType, 0, 0, null, outputPath);
   }
 
@@ -84,7 +91,8 @@ public class Driver {
   }
 
   private static void createImage(ImageHandling imageHandling, Enum creationType,
-                                  FlagType flagType, int width, String outputPath) throws IOException {
+                                  FlagType flagType, int width,
+                                  String outputPath) throws IOException {
     imageHandling.createImage(creationType, width, 0, flagType, outputPath);
   }
 }

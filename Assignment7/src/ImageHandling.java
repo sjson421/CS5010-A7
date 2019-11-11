@@ -1,4 +1,3 @@
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -16,5 +15,6 @@ public interface ImageHandling {
    * @param flagType     If creationType is a flag, the flag's country name.
    * @param outputPath   Output path for the created image.
    */
-  void createImage(Enum creationType, int width, int height, FlagType flagType, String outputPath) throws IOException;
+  void createImage(Enum creationType, int width, int height, FlagType flagType,
+                   String outputPath) throws IOException;
 }
