@@ -49,7 +49,7 @@ public class ImageGeneration extends AbstractImageHandling {
   private BufferedImage vertRainbowStripes(int width, int height) {
     BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++)
+      for (int j = 0; j < width; j++) {
         if (j < width / 7) {
           colorRed(img, j, i);
         } else if (j < 2 * width / 7) {
@@ -65,6 +65,7 @@ public class ImageGeneration extends AbstractImageHandling {
         } else {
           colorViolet(img, j, i);
         }
+      }
     }
     return img;
   }
