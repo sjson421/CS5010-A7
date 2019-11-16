@@ -17,82 +17,69 @@ public class Driver {
    */
   public static void main(String[] args) {
     try {
-      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       BufferedImage image1 = ImageIO.read(new File("./res/typical.jpg"));
       BufferedImage image2 = ImageIO.read(new File("./res/landscape.jpg"));
       ImageHandling mod1 = new ImageModification(image1);
       ImageHandling mod2 = new ImageModification(image2);
       ImageHandling gen = new ImageGeneration();
-      int width;
-      int height;
 
-      createImage(mod1, FilterType.BLUR, "./res/typicalBlur.jpg");
-      createImage(mod1, FilterType.SHARPEN, "./res/typicalSharpen.jpg");
-      createImage(mod1, FilterType.GREYSCALE, "./res/typicalGreyScale.jpg");
-      createImage(mod1, FilterType.SEPIA, "./res/typicalSepia.jpg");
+      saveImage(mod1.createImage(ModType.BLUR, 0, 0, null),
+              "./res/typicalBlur.jpg");
+      saveImage(mod1.createImage(ModType.SHARPEN, 0, 0, null),
+              "./res/typicalSharpen.jpg");
+      saveImage(mod1.createImage(ModType.GREYSCALE, 0, 0, null),
+              "./res/typicalGreyScale.jpg");
+      saveImage(mod1.createImage(ModType.SEPIA, 0, 0, null),
+              "./res/typicalSepia.jpg");
 
-      createImage(mod2, FilterType.BLUR, "./res/landscapeBlur.jpg");
-      createImage(mod2, FilterType.SHARPEN, "./res/landscapeSharpen.jpg");
-      createImage(mod2, FilterType.GREYSCALE, "./res/landscapeGreyScale.jpg");
-      createImage(mod2, FilterType.SEPIA, "./res/landscapeSepia.jpg");
+      saveImage(mod2.createImage(ModType.BLUR, 0, 0, null),
+              "./res/landscapeBlur.jpg");
+      saveImage(mod2.createImage(ModType.SHARPEN, 0, 0, null),
+              "./res/landscapeSharpen.jpg");
+      saveImage(mod2.createImage(ModType.GREYSCALE, 0, 0, null),
+              "./res/landscapeGreyScale.jpg");
+      saveImage(mod2.createImage(ModType.SEPIA, 0, 0, null),
+              "./res/landscapeSepia.jpg");
 
-      System.out.println("Enter horizontal rainbow width:");
-      width = Integer.parseInt(br.readLine());
-      System.out.println("Enter horizontal rainbow height:");
-      height = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.HOR_RAINBOW_STRIPES, width, height,
+      saveImage(gen.createImage(GenerationType.HOR_RAINBOW_STRIPES, 500, 1000, null),
               "./res/horRainbowStripes.jpg");
 
-      System.out.println("Enter vertical rainbow width:");
-      width = Integer.parseInt(br.readLine());
-      System.out.println("Enter vertical rainbow height:");
-      height = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.VERT_RAINBOW_STRIPES, width, height,
+      saveImage(gen.createImage(GenerationType.VERT_RAINBOW_STRIPES, 1000, 500, null),
               "./res/vertRainbowStripes.jpg");
 
-      System.out.println("Enter checkerboard square size:");
-      width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.CHECKERBOARD, width,
+      saveImage(gen.createImage(GenerationType.CHECKERBOARD, 20, 0, null),
               "./res/checkerboard.jpg");
 
-      System.out.println("Enter France's flag width:");
-      width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.FLAG, FlagType.FRANCE, width,
+      saveImage(gen.createImage(GenerationType.FLAG, 500, 0, FlagType.FRANCE),
               "./res/flagFrance.jpg");
 
-      System.out.println("Enter Greece's flag width:");
-      width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.FLAG, FlagType.GREECE, width,
+      saveImage(gen.createImage(GenerationType.FLAG, 500, 0, FlagType.GREECE),
               "./res/flagGreece.jpg");
 
-      System.out.println("Enter Switzerland's flag width:");
-      width = Integer.parseInt(br.readLine());
-      createImage(gen, GenerationType.FLAG, FlagType.SWITZERLAND, width,
+      saveImage(gen.createImage(GenerationType.FLAG, 300, 0, FlagType.SWITZERLAND),
               "./res/flagSwitzerland.jpg");
+
+      /*
+       * Assignment 2 starts here ----------------------------------------------------------------
+       */
+      saveImage(mod1.createImage(ModType.DITHER, 0, 0, null),
+              "./res/typicalDither.jpg");
+      saveImage(mod2.createImage(ModType.DITHER, 0, 0, null),
+              "./res/landscapeDither.jpg");
 
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  private static void createImage(ImageHandling imageHandling, Enum creationType,
-                                  String outputPath) throws IOException {
-    imageHandling.createImage(creationType, 0, 0, null, outputPath);
-  }
-
-  private static void createImage(ImageHandling imageHandling, Enum creationType,
-                                  int width, int height, String outputPath) throws IOException {
-    imageHandling.createImage(creationType, width, height, null, outputPath);
-  }
-
-  private static void createImage(ImageHandling imageHandling, Enum creationType,
-                                  int width, String outputPath) throws IOException {
-    imageHandling.createImage(creationType, width, width, null, outputPath);
-  }
-
-  private static void createImage(ImageHandling imageHandling, Enum creationType,
-                                  FlagType flagType, int width,
-                                  String outputPath) throws IOException {
-    imageHandling.createImage(creationType, width, 0, flagType, outputPath);
+  private static void saveImage(BufferedImage image, String outputPath) throws IOException {
+    if (image != null && outputPath.substring(outputPath.length() - 4)
+            .equalsIgnoreCase(".jpg")) {
+      File outputFile = new File(outputPath);
+      ImageIO.write(image, "jpg", outputFile);
+    } else {
+      System.err.println("There is an error in your output path or image. "
+              + "Check that your output path ends in \".jpg\"");
+    }
   }
 }

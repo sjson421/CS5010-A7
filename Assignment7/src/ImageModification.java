@@ -1,5 +1,4 @@
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * Class for modifying a given image. Requires an argument image to modify.
@@ -12,6 +11,7 @@ public class ImageModification extends AbstractImageHandling {
 
   /**
    * Takes in the image to modify and sets according variables according to it.
+   *
    * @param image Image to modify.
    */
   public ImageModification(BufferedImage image) {
@@ -21,30 +21,31 @@ public class ImageModification extends AbstractImageHandling {
   }
 
   @Override
-  public void createImage(Enum creationType, int width, int height,
-                          FlagType flagType, String outputPath) throws IOException {
+  public BufferedImage createImage(Enum creationType, int width, int height, FlagType flagType) {
     BufferedImage created = null;
-    if (creationType == FilterType.BLUR) {
+    if (creationType == ModType.BLUR) {
       created = blur();
-    } else if (creationType == FilterType.SHARPEN) {
+    } else if (creationType == ModType.SHARPEN) {
       created = sharpen();
-    } else if (creationType == FilterType.GREYSCALE) {
+    } else if (creationType == ModType.GREYSCALE) {
       created = greyscale();
-    } else if (creationType == FilterType.SEPIA) {
+    } else if (creationType == ModType.SEPIA) {
       created = sepia();
+    } else if (creationType == ModType.DITHER) {
+      created = dither();
     }
-    saveImage(created, outputPath);
+    return created;
   }
 
   private BufferedImage blur() {
     BufferedImage returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    double[][] filter = createBlurFilter();
+    double[][] filter = createBlurKernel();
     return applyFilter(returnImage, filter);
   }
 
   private BufferedImage sharpen() {
     BufferedImage returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    double[][] filter = createSharpenFilter();
+    double[][] filter = createSharpenKernel();
     return applyFilter(returnImage, filter);
   }
 
@@ -107,8 +108,7 @@ public class ImageModification extends AbstractImageHandling {
     int r = clamp(colorMatrix[0], 0, 255);
     int g = clamp(colorMatrix[1], 0, 255);
     int b = clamp(colorMatrix[2], 0, 255);
-    int rgb = (r << 16) | (g << 8) | b;
-    returnImage.setRGB(j, i, rgb);
+    returnImage.setRGB(j, i, (r << 16) | (g << 8) | b);
   }
 
   private int[] getRGBForPixel(int x, int y) {
@@ -120,7 +120,7 @@ public class ImageModification extends AbstractImageHandling {
     return channels;
   }
 
-  private double[][] createBlurFilter() {
+  private double[][] createBlurKernel() {
     double[][] filter = new double[3][3];
     for (int y = 0; y < filter.length; y++) {
       for (int x = 0; x < filter[y].length; x++) {
@@ -136,7 +136,7 @@ public class ImageModification extends AbstractImageHandling {
     return filter;
   }
 
-  private double[][] createSharpenFilter() {
+  private double[][] createSharpenKernel() {
     double[][] filter = new double[5][5];
     for (int y = 0; y < filter.length; y++) {
       for (int x = 0; x < filter[y].length; x++) {
@@ -180,5 +180,54 @@ public class ImageModification extends AbstractImageHandling {
     matrix[2][1] = 0.534;
     matrix[2][2] = 0.131;
     return matrix;
+  }
+
+  private BufferedImage dither() {
+    BufferedImage returnImage = greyscale();
+
+    double[][] colorTable = new double[height][width];
+
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        colorTable[i][j] = returnImage.getRGB(j, i);
+      }
+    }
+
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        int oldColor = (int) colorTable[i][j];
+        int newColor = getCloserBlackWhite(oldColor);
+
+        returnImage.setRGB(j, i, newColor);
+
+        int error = oldColor - newColor;
+
+        if (j + 1 < width) {
+          returnImage.setRGB(j + 1, i, (int) (colorTable[i][j + 1] + 7.0 / 16 * error));
+        }
+        if (i + 1 < height) {
+          if (j - 1 >= 0) {
+            returnImage.setRGB(j - 1, i + 1, (int) (colorTable[i + 1][j - 1] + 3.0 / 16 * error));
+          }
+
+          returnImage.setRGB(j, i + 1, (int) (colorTable[i + 1][j] + 5.0 / 16 * error));
+
+          if (j + 1 < width) {
+            returnImage.setRGB(j + 1, i + 1, (int) (colorTable[i + 1][j + 1] + 3.0 / 16 * error));
+          }
+        }
+      }
+    }
+    return returnImage;
+  }
+
+  private int getCloserBlackWhite(int oldColor) {
+    int newColor;
+    if (oldColor < 255 - oldColor) {
+      newColor = 0;
+    } else {
+      newColor = 255;
+    }
+    return newColor;
   }
 }

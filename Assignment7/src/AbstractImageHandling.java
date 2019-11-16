@@ -25,11 +25,4 @@ public abstract class AbstractImageHandling implements ImageHandling {
       return Math.min(value, max);
     }
   }
-
-  protected void saveImage(BufferedImage image, String outputPath) throws IOException {
-    if (image != null) {
-      File outputFile = new File(outputPath);
-      ImageIO.write(image, "jpg", outputFile);
-    }
-  }
 }

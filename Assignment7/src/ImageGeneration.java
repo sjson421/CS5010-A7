@@ -7,8 +7,8 @@ import java.io.IOException;
  */
 public class ImageGeneration extends AbstractImageHandling {
   @Override
-  public void createImage(Enum creationType, int width, int height,
-                          FlagType flagType, String outputPath) throws IOException {
+  public BufferedImage createImage(Enum creationType, int width, int height,
+                                   FlagType flagType) {
     BufferedImage created = null;
     if (creationType == GenerationType.HOR_RAINBOW_STRIPES) {
       created = horRainbowStripes(width, height);
@@ -19,7 +19,7 @@ public class ImageGeneration extends AbstractImageHandling {
     } else if (creationType == GenerationType.FLAG) {
       created = generateFlag(width, flagType);
     }
-    saveImage(created, outputPath);
+    return created;
   }
 
   private BufferedImage horRainbowStripes(int width, int height) {

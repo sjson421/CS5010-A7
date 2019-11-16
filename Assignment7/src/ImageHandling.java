@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -13,8 +14,7 @@ public interface ImageHandling {
    * @param width        Width of a checkerbox or the image.
    * @param height       Height of a checkerbox or the image.
    * @param flagType     If creationType is a flag, the flag's country name.
-   * @param outputPath   Output path for the created image.
+   * @return Newly created image.
    */
-  void createImage(Enum creationType, int width, int height, FlagType flagType,
-                   String outputPath) throws IOException;
+  BufferedImage createImage(Enum creationType, int width, int height, FlagType flagType);
 }
