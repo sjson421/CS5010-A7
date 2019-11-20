@@ -76,7 +76,7 @@ public class ImageModification extends AbstractImageHandling {
 
               if (pixelUsedX >= 0 && pixelUsedY >= 0 && pixelUsedX < width
                       && pixelUsedY < height) {
-                int[] rgbProduct = getRGBForPixel(pixelUsedX, pixelUsedY);
+                int[] rgbProduct = getRGBForPixel(image, pixelUsedX, pixelUsedY);
                 filterSum[k] += rgbProduct[k] * filter[l + filterHalfLen][m + filterHalfLen];
               }
             }
@@ -91,7 +91,7 @@ public class ImageModification extends AbstractImageHandling {
   private BufferedImage applyColorMatrix(BufferedImage returnImage, double[][] matrix) {
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        int[] initialRGB = getRGBForPixel(j, i);
+        int[] initialRGB = getRGBForPixel(image, j, i);
         int[] appliedRGB = new int[RBG_LEN];
         for (int l = 0; l < matrix.length; l++) {
           for (int m = 0; m < matrix[l].length; m++) {
@@ -111,9 +111,9 @@ public class ImageModification extends AbstractImageHandling {
     returnImage.setRGB(j, i, (r << 16) | (g << 8) | b);
   }
 
-  private int[] getRGBForPixel(int x, int y) {
+  private int[] getRGBForPixel(BufferedImage img, int x, int y) {
     int[] channels = new int[3];
-    int rgb = image.getRGB(x, y);
+    int rgb = img.getRGB(x, y);
     channels[0] = (rgb >> 16) & 0x000000FF;
     channels[1] = (rgb >> 8) & 0x000000FF;
     channels[2] = (rgb) & 0x000000FF;
@@ -185,17 +185,9 @@ public class ImageModification extends AbstractImageHandling {
   private BufferedImage dither() {
     BufferedImage returnImage = greyscale();
 
-    double[][] colorTable = new double[height][width];
-
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        colorTable[i][j] = getRGBForPixel(j, i)[0];
-      }
-    }
-
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        int oldColor = (int) colorTable[i][j];
+        int oldColor = getRGBForPixel(returnImage, j, i)[0];
         int newColor = getCloserColor(oldColor);
 
         int[] color = new int[3];
@@ -207,22 +199,28 @@ public class ImageModification extends AbstractImageHandling {
         int error = oldColor - newColor;
 
         if (j + 1 < width) {
-          returnImage.setRGB(j + 1, i, (int) (colorTable[i][j + 1] + 7.0 / 16 * error));
+          modifyLaterPixels(returnImage, error, 7. / 16, j + 1, i);
         }
         if (i + 1 < height) {
           if (j - 1 >= 0) {
-            returnImage.setRGB(j - 1, i + 1, (int) (colorTable[i + 1][j - 1] + 3.0 / 16 * error));
+            modifyLaterPixels(returnImage, error, 3. / 16, j - 1, i + 1);
           }
 
-          returnImage.setRGB(j, i + 1, (int) (colorTable[i + 1][j] + 5.0 / 16 * error));
+          modifyLaterPixels(returnImage, error, 5. / 16, j, i + 1);
 
           if (j + 1 < width) {
-            returnImage.setRGB(j + 1, i + 1, (int) (colorTable[i + 1][j + 1] + 1.0 / 16 * error));
+            modifyLaterPixels(returnImage, error, 1. / 16, j + 1, i + 1);
           }
         }
       }
     }
     return returnImage;
+  }
+
+  private void modifyLaterPixels(BufferedImage returnImage, int error, double multiplier, int j, int i) {
+    int[] pixelRGB = getRGBForPixel(returnImage, j, i);
+    pixelRGB[0] += multiplier * error;
+    setRGB(returnImage, pixelRGB, j, i);
   }
 
   private int getCloserColor(int oldColor) {
