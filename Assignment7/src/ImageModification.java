@@ -189,16 +189,20 @@ public class ImageModification extends AbstractImageHandling {
 
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        colorTable[i][j] = returnImage.getRGB(j, i);
+        colorTable[i][j] = getRGBForPixel(j, i)[0];
       }
     }
 
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         int oldColor = (int) colorTable[i][j];
-        int newColor = getCloserBlackWhite(oldColor);
+        int newColor = getCloserColor(oldColor);
 
-        returnImage.setRGB(j, i, newColor);
+        int[] color = new int[3];
+        color[0] = newColor;
+        color[1] = newColor;
+        color[2] = newColor;
+        setRGB(returnImage, color, j, i);
 
         int error = oldColor - newColor;
 
@@ -213,7 +217,7 @@ public class ImageModification extends AbstractImageHandling {
           returnImage.setRGB(j, i + 1, (int) (colorTable[i + 1][j] + 5.0 / 16 * error));
 
           if (j + 1 < width) {
-            returnImage.setRGB(j + 1, i + 1, (int) (colorTable[i + 1][j + 1] + 3.0 / 16 * error));
+            returnImage.setRGB(j + 1, i + 1, (int) (colorTable[i + 1][j + 1] + 1.0 / 16 * error));
           }
         }
       }
@@ -221,7 +225,7 @@ public class ImageModification extends AbstractImageHandling {
     return returnImage;
   }
 
-  private int getCloserBlackWhite(int oldColor) {
+  private int getCloserColor(int oldColor) {
     int newColor;
     if (oldColor < 255 - oldColor) {
       newColor = 0;

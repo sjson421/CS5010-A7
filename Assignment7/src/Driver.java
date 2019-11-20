@@ -21,43 +21,43 @@ public class Driver {
       BufferedImage image2 = ImageIO.read(new File("./res/landscape.jpg"));
       ImageHandling mod1 = new ImageModification(image1);
       ImageHandling mod2 = new ImageModification(image2);
-      ImageHandling gen = new ImageGeneration();
-
-      saveImage(mod1.createImage(ModType.BLUR, 0, 0, null),
-              "./res/typicalBlur.jpg");
-      saveImage(mod1.createImage(ModType.SHARPEN, 0, 0, null),
-              "./res/typicalSharpen.jpg");
-      saveImage(mod1.createImage(ModType.GREYSCALE, 0, 0, null),
-              "./res/typicalGreyScale.jpg");
-      saveImage(mod1.createImage(ModType.SEPIA, 0, 0, null),
-              "./res/typicalSepia.jpg");
-
-      saveImage(mod2.createImage(ModType.BLUR, 0, 0, null),
-              "./res/landscapeBlur.jpg");
-      saveImage(mod2.createImage(ModType.SHARPEN, 0, 0, null),
-              "./res/landscapeSharpen.jpg");
-      saveImage(mod2.createImage(ModType.GREYSCALE, 0, 0, null),
-              "./res/landscapeGreyScale.jpg");
-      saveImage(mod2.createImage(ModType.SEPIA, 0, 0, null),
-              "./res/landscapeSepia.jpg");
-
-      saveImage(gen.createImage(GenerationType.HOR_RAINBOW_STRIPES, 500, 1000, null),
-              "./res/horRainbowStripes.jpg");
-
-      saveImage(gen.createImage(GenerationType.VERT_RAINBOW_STRIPES, 1000, 500, null),
-              "./res/vertRainbowStripes.jpg");
-
-      saveImage(gen.createImage(GenerationType.CHECKERBOARD, 20, 0, null),
-              "./res/checkerboard.jpg");
-
-      saveImage(gen.createImage(GenerationType.FLAG, 500, 0, FlagType.FRANCE),
-              "./res/flagFrance.jpg");
-
-      saveImage(gen.createImage(GenerationType.FLAG, 500, 0, FlagType.GREECE),
-              "./res/flagGreece.jpg");
-
-      saveImage(gen.createImage(GenerationType.FLAG, 300, 0, FlagType.SWITZERLAND),
-              "./res/flagSwitzerland.jpg");
+//      ImageHandling gen = new ImageGeneration();
+//
+//      saveImage(mod1.createImage(ModType.BLUR, 0, 0, null),
+//              "./res/typicalBlur.jpg");
+//      saveImage(mod1.createImage(ModType.SHARPEN, 0, 0, null),
+//              "./res/typicalSharpen.jpg");
+//      saveImage(mod1.createImage(ModType.GREYSCALE, 0, 0, null),
+//              "./res/typicalGreyScale.jpg");
+//      saveImage(mod1.createImage(ModType.SEPIA, 0, 0, null),
+//              "./res/typicalSepia.jpg");
+//
+//      saveImage(mod2.createImage(ModType.BLUR, 0, 0, null),
+//              "./res/landscapeBlur.jpg");
+//      saveImage(mod2.createImage(ModType.SHARPEN, 0, 0, null),
+//              "./res/landscapeSharpen.jpg");
+//      saveImage(mod2.createImage(ModType.GREYSCALE, 0, 0, null),
+//              "./res/landscapeGreyScale.jpg");
+//      saveImage(mod2.createImage(ModType.SEPIA, 0, 0, null),
+//              "./res/landscapeSepia.jpg");
+//
+//      saveImage(gen.createImage(GenerationType.HOR_RAINBOW_STRIPES, 500, 1000, null),
+//              "./res/horRainbowStripes.jpg");
+//
+//      saveImage(gen.createImage(GenerationType.VERT_RAINBOW_STRIPES, 1000, 500, null),
+//              "./res/vertRainbowStripes.jpg");
+//
+//      saveImage(gen.createImage(GenerationType.CHECKERBOARD, 20, 0, null),
+//              "./res/checkerboard.jpg");
+//
+//      saveImage(gen.createImage(GenerationType.FLAG, 500, 0, FlagType.FRANCE),
+//              "./res/flagFrance.jpg");
+//
+//      saveImage(gen.createImage(GenerationType.FLAG, 500, 0, FlagType.GREECE),
+//              "./res/flagGreece.jpg");
+//
+//      saveImage(gen.createImage(GenerationType.FLAG, 300, 0, FlagType.SWITZERLAND),
+//              "./res/flagSwitzerland.jpg");
 
       /*
        * Assignment 2 starts here ----------------------------------------------------------------
