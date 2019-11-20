@@ -1,0 +1,3 @@
+load landscape.jpg
+greyscale
+save landscape-greyscale.png
