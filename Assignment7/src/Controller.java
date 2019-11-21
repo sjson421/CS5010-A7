@@ -27,9 +27,9 @@ public class Controller implements IController {
       String[] terms = line.split(" ");
 
       if (terms.length == 1) {
-        handleOneTerm(terms);
+        handleOneTerm(line, terms);
       } else if (terms.length > 1) {
-        handleMoreTerms(terms);
+        handleMoreTerms(line, terms);
       }
     }
   }
@@ -43,70 +43,90 @@ public class Controller implements IController {
     }
   }
 
-  private void handleOneTerm(String[] terms) {
+  private void handleOneTerm(String line, String[] terms) {
     if (imageHandling instanceof ImageModification) {
       switch (terms[0].toLowerCase()) {
         //Modification
         case "blur":
-          storedImage = imageHandling.createImage(ModType.BLUR, 0, 0, null);
+          storedImage = imageHandling.createImage(ModType.BLUR, 0, 0,
+                  null, 0);
+          imageHandling = new ImageModification(storedImage);
           break;
         case "sharpen":
-          storedImage = imageHandling.createImage(ModType.SHARPEN, 0, 0, null);
+          storedImage = imageHandling.createImage(ModType.SHARPEN, 0, 0,
+                  null, 0);
+          imageHandling = new ImageModification(storedImage);
           break;
         case "greyscale":
-          storedImage = imageHandling.createImage(ModType.GREYSCALE, 0, 0, null);
+          storedImage = imageHandling.createImage(ModType.GREYSCALE, 0, 0,
+                  null, 0);
+          imageHandling = new ImageModification(storedImage);
           break;
         case "sepia":
-          storedImage = imageHandling.createImage(ModType.SEPIA, 0, 0, null);
+          storedImage = imageHandling.createImage(ModType.SEPIA, 0, 0,
+                  null, 0);
+          imageHandling = new ImageModification(storedImage);
           break;
         case "dither":
-          storedImage = imageHandling.createImage(ModType.DITHER, 0, 0, null);
+          storedImage = imageHandling.createImage(ModType.DITHER, 0, 0,
+                  null, 0);
+          imageHandling = new ImageModification(storedImage);
           break;
       }
     }
   }
 
-  private void handleMoreTerms(String[] terms) throws IOException {
+  private void handleMoreTerms(String line, String[] terms) throws IOException {
     switch (terms[0].toLowerCase()) {
       case "load":
         modImage = ImageIO.read(new File("./res/" + terms[1]));
         imageHandling = new ImageModification(modImage);
         break;
       case "save":
-        saveImage(storedImage, "./res/"+ terms[1]);
+        saveImage(storedImage, "./res/" + terms[1]);
         break;
-        //Generation
+      //Modification
+      case "mosaic":
+        storedImage = imageHandling.createImage(ModType.MOSAIC, 0, 0,
+                null, Integer.parseInt(terms[1]));
+        imageHandling = new ImageModification(storedImage);
+        break;
+      //Generation
       case "horizontalrainbow":
         imageHandling = imageGen;
         storedImage = imageHandling.createImage(GenerationType.HOR_RAINBOW_STRIPES,
-                Integer.parseInt(terms[1]), Integer.parseInt(terms[2]), null);
+                Integer.parseInt(terms[1]), Integer.parseInt(terms[2]), null, 0);
         break;
       case "verticalrainbow":
         imageHandling = imageGen;
         storedImage = imageHandling.createImage(GenerationType.VERT_RAINBOW_STRIPES,
-                Integer.parseInt(terms[1]), Integer.parseInt(terms[2]), null);
+                Integer.parseInt(terms[1]), Integer.parseInt(terms[2]), null, 0);
         break;
       case "checkerboard":
         imageHandling = imageGen;
         storedImage = imageHandling.createImage(GenerationType.CHECKERBOARD,
-                Integer.parseInt(terms[1]), 0, null);
+                Integer.parseInt(terms[1]), 0, null, 0);
         break;
       case "flag":
         imageHandling = imageGen;
         switch (terms[1].toLowerCase()) {
           case "france":
             storedImage = imageHandling.createImage(GenerationType.FLAG,
-                    Integer.parseInt(terms[2]), 0, FlagType.FRANCE);
+                    Integer.parseInt(terms[2]), 0, FlagType.FRANCE, 0);
             break;
           case "greece":
             storedImage = imageHandling.createImage(GenerationType.FLAG,
-                    Integer.parseInt(terms[2]), 0, FlagType.GREECE);
+                    Integer.parseInt(terms[2]), 0, FlagType.GREECE, 0);
             break;
           case "switzerland":
             storedImage = imageHandling.createImage(GenerationType.FLAG,
-                    Integer.parseInt(terms[2]), 0, FlagType.SWITZERLAND);
+                    Integer.parseInt(terms[2]), 0, FlagType.SWITZERLAND, 0);
             break;
         }
+        break;
+      default:
+        System.err.println("Your command of \"" + line + "\" is invalid. "
+                + "Check that you do not require a different number of terms.");
         break;
     }
   }

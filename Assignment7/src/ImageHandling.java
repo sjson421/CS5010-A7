@@ -14,7 +14,9 @@ public interface ImageHandling {
    * @param width        Width of a checkerbox or the image.
    * @param height       Height of a checkerbox or the image.
    * @param flagType     If creationType is a flag, the flag's country name.
+   * @param seedCount        Number of seeds for mosaicing.
    * @return Newly created image.
    */
-  BufferedImage createImage(Enum creationType, int width, int height, FlagType flagType);
+  BufferedImage createImage(Enum creationType, int width, int height,
+                            FlagType flagType, int seedCount);
 }

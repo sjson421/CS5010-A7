@@ -1,4 +1,7 @@
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Class for modifying a given image. Requires an argument image to modify.
@@ -21,7 +24,7 @@ public class ImageModification extends AbstractImageHandling {
   }
 
   @Override
-  public BufferedImage createImage(Enum creationType, int width, int height, FlagType flagType) {
+  public BufferedImage createImage(Enum creationType, int width, int height, FlagType flagType, int seedCount) {
     BufferedImage created = null;
     if (creationType == ModType.BLUR) {
       created = blur();
@@ -33,8 +36,20 @@ public class ImageModification extends AbstractImageHandling {
       created = sepia();
     } else if (creationType == ModType.DITHER) {
       created = dither();
+    } else if (creationType == ModType.MOSAIC) {
+      created = mosaic(seedCount);
     }
     return created;
+  }
+
+  private class Coordinate {
+    private int x;
+    private int y;
+
+    private Coordinate(int x, int y) {
+      this.x = x;
+      this.y = y;
+    }
   }
 
   private BufferedImage blur() {
@@ -56,7 +71,6 @@ public class ImageModification extends AbstractImageHandling {
   }
 
   private BufferedImage sepia() {
-
     BufferedImage returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     double[][] matrix = createSepiaColorMatrix();
     return applyColorMatrix(returnImage, matrix);
@@ -231,5 +245,67 @@ public class ImageModification extends AbstractImageHandling {
       newColor = 255;
     }
     return newColor;
+  }
+
+  private BufferedImage mosaic(int seedCount) {
+    System.out.println("Mosaic operation in progress with " + seedCount + " seeds. Sit tight.");
+    BufferedImage returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    Map<Coordinate, ArrayList<Coordinate>> closestSeedPixels = new HashMap<>(seedCount);
+    for (int i = 0; i < seedCount; i++) {
+      int x = (int) (Math.random() * width);
+      int y = (int) (Math.random() * height);
+      closestSeedPixels.put(
+              new Coordinate(x, y), new ArrayList<>(height * width / seedCount));
+    }
+    setMosaicImage(returnImage, closestSeedPixels);
+    return returnImage;
+  }
+
+  private double getDistance(int x1, int y1, int x2, int y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+  }
+
+  private void setMosaicImage(BufferedImage returnImage,
+                                Map<Coordinate, ArrayList<Coordinate>> closestSeedPixels) {
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        double minDistance = Double.POSITIVE_INFINITY;
+        Coordinate closestSeed = null;
+        for (Coordinate seed : closestSeedPixels.keySet()) {
+          double seedDistance = getDistance(j, i, seed.x, seed.y);
+          if (seedDistance < minDistance) {
+            minDistance = seedDistance;
+            closestSeed = seed;
+          }
+        }
+        if (closestSeed != null) {
+          closestSeedPixels.get(closestSeed).add(new Coordinate(j, i));
+        }
+      }
+    }
+
+    for (ArrayList<Coordinate> closestPixels : closestSeedPixels.values()) {
+      int redSum = 0;
+      int greenSum = 0;
+      int blueSum = 0;
+
+      for (Coordinate pixel : closestPixels) {
+        int[] rgb = getRGBForPixel(image, pixel.x, pixel.y);
+        redSum += rgb[0];
+        greenSum += rgb[1];
+        blueSum += rgb[2];
+      }
+      int[] newRGB = new int[3];
+      int size = closestPixels.size();
+      if (size > 0) {
+        newRGB[0] = redSum / size;
+        newRGB[1] = greenSum / size;
+        newRGB[2] = blueSum / size;
+
+        for (Coordinate pixel : closestPixels) {
+          setRGB(returnImage, newRGB, pixel.x, pixel.y);
+        }
+      }
+    }
   }
 }

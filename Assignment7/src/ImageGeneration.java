@@ -1,5 +1,4 @@
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * Class for generating an image, depending on the method called. Does not require an argument image
@@ -8,7 +7,7 @@ import java.io.IOException;
 public class ImageGeneration extends AbstractImageHandling {
   @Override
   public BufferedImage createImage(Enum creationType, int width, int height,
-                                   FlagType flagType) {
+                                   FlagType flagType, int seedCount) {
     BufferedImage created = null;
     if (creationType == GenerationType.HOR_RAINBOW_STRIPES) {
       created = horRainbowStripes(width, height);
@@ -23,20 +22,20 @@ public class ImageGeneration extends AbstractImageHandling {
   }
 
   private BufferedImage horRainbowStripes(int width, int height) {
-    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    for (int i = 0; i < height; i++) {
+    BufferedImage img = new BufferedImage(width, height * 7, BufferedImage.TYPE_INT_RGB);
+    for (int i = 0; i < height*7; i++) {
       for (int j = 0; j < width; j++) {
-        if (i < height / 7) {
+        if (i < height) {
           colorRed(img, j, i);
-        } else if (i < 2 * height / 7) {
+        } else if (i < 2 * height) {
           colorOrange(img, j, i);
-        } else if (i < 3 * height / 7) {
+        } else if (i < 3 * height) {
           colorYellow(img, j, i);
-        } else if (i < 4 * height / 7) {
+        } else if (i < 4 * height) {
           colorGreen(img, j, i);
-        } else if (i < 5 * height / 7) {
+        } else if (i < 5 * height) {
           colorBlue(img, j, i);
-        } else if (i < 6 * height / 7) {
+        } else if (i < 6 * height) {
           colorIndigo(img, j, i);
         } else {
           colorViolet(img, j, i);
@@ -47,20 +46,20 @@ public class ImageGeneration extends AbstractImageHandling {
   }
 
   private BufferedImage vertRainbowStripes(int width, int height) {
-    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    BufferedImage img = new BufferedImage(width * 7, height, BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        if (j < width / 7) {
+      for (int j = 0; j < width*7; j++) {
+        if (j < width) {
           colorRed(img, j, i);
-        } else if (j < 2 * width / 7) {
+        } else if (j < 2 * width) {
           colorOrange(img, j, i);
-        } else if (j < 3 * width / 7) {
+        } else if (j < 3 * width) {
           colorYellow(img, j, i);
-        } else if (j < 4 * width / 7) {
+        } else if (j < 4 * width) {
           colorGreen(img, j, i);
-        } else if (j < 5 * width / 7) {
+        } else if (j < 5 * width) {
           colorBlue(img, j, i);
-        } else if (j < 6 * width / 7) {
+        } else if (j < 6 * width) {
           colorIndigo(img, j, i);
         } else {
           colorViolet(img, j, i);
