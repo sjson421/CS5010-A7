@@ -8,18 +8,18 @@ In order to perform multiple modification operations on the same image, simply c
 
 **Input Format:**
 
-* load <file name in res folder>. Loads in the image for modification.
-* save <file name in res folder>. Saves the current image that has been either modified or generated.
+* load \<file name in res folder\>. Loads in the image for modification.
+* save \<file name in res folder\>. Saves the current image that has been either modified or generated.
 * blur
 * sharpen
 * greyscale
 * sepia
 * dither
-* mosaic <number of seeds>
-* horizontalrainbow <width of image> <height of individual stripe>
-* verticalrainbow <width of individual stripe> <height of image>
-* checkerboard <width of individual square>
-* flag <name of country> <width of flag>
+* mosaic \<number of seeds\>
+* horizontalrainbow \<width of image\> \<height of individual stripe\>
+* verticalrainbow \<width of individual stripe\> \<height of image\>
+* checkerboard \<width of individual square\>
+* flag \<name of country\> \<width of flag\>
   * france
   * greece
   * switzerland
