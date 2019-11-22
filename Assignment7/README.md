@@ -3,7 +3,7 @@
 **How to use:**
 
 Run Driver.java or the given JAR file from the res folder. 
-The command to run the jar file will be "java -jar Assignment7.jar \<input text file\>". Input files must be moved into the parent directory of src and res in order for the program to run correctly.
+The command to run the jar file will be, from the res folder, "java -jar assignment.jar \<input text file\>". Input files must be moved into the parent directory of src and res in order for the program to run correctly.
 
 Images to modify by blurring, etc. are pre-loaded from the res folder, called landscape.jpg and typical.jpg. Input is from input.txt commands.
 
