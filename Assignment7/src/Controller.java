@@ -9,7 +9,6 @@ import javax.imageio.ImageIO;
 
 public class Controller implements IController {
   private String inputFile;
-  private BufferedImage modImage;
   private ImageHandling imageHandling;
   private BufferedImage storedImage;
   private ImageGeneration imageGen = new ImageGeneration();
@@ -21,13 +20,13 @@ public class Controller implements IController {
   @Override
   public void runProgram() throws IOException {
     BufferedReader buffReader = new BufferedReader
-            (new InputStreamReader(new FileInputStream("./" + inputFile)));
+            (new InputStreamReader(new FileInputStream("../" + inputFile)));
     String line;
     while ((line = buffReader.readLine()) != null) {
       String[] terms = line.split(" ");
 
       if (terms.length == 1) {
-        handleOneTerm(line, terms);
+        handleOneTerm(terms);
       } else if (terms.length > 1) {
         handleMoreTerms(line, terms);
       }
@@ -43,7 +42,7 @@ public class Controller implements IController {
     }
   }
 
-  private void handleOneTerm(String line, String[] terms) {
+  private void handleOneTerm(String[] terms) {
     if (imageHandling instanceof ImageModification) {
       switch (terms[0].toLowerCase()) {
         //Modification
@@ -79,11 +78,11 @@ public class Controller implements IController {
   private void handleMoreTerms(String line, String[] terms) throws IOException {
     switch (terms[0].toLowerCase()) {
       case "load":
-        modImage = ImageIO.read(new File("./res/" + terms[1]));
+        BufferedImage modImage = ImageIO.read(new File("./" + terms[1]));
         imageHandling = new ImageModification(modImage);
         break;
       case "save":
-        saveImage(storedImage, "./res/" + terms[1]);
+        saveImage(storedImage, "./" + terms[1]);
         break;
       //Modification
       case "mosaic":
