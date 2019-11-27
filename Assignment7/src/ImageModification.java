@@ -24,7 +24,8 @@ public class ImageModification extends AbstractImageHandling {
   }
 
   @Override
-  public BufferedImage createImage(Enum creationType, int width, int height, FlagType flagType, int seedCount) {
+  public BufferedImage createImage(Enum creationType, int width, int height,
+                                   FlagType flagType, int seedCount) {
     BufferedImage created = null;
     if (creationType == ModType.BLUR) {
       created = blur();
@@ -231,7 +232,8 @@ public class ImageModification extends AbstractImageHandling {
     return returnImage;
   }
 
-  private void modifyLaterPixels(BufferedImage returnImage, int error, double multiplier, int j, int i) {
+  private void modifyLaterPixels(BufferedImage returnImage, int error, double multiplier,
+                                 int j, int i) {
     int[] pixelRGB = getRGBForPixel(returnImage, j, i);
     pixelRGB[0] += multiplier * error;
     setRGB(returnImage, pixelRGB, j, i);

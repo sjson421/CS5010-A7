@@ -1,0 +1,13 @@
+flag switzerland 100
+save flag-switzerland.jpg
+
+load flag-switzerland.jpg
+blur
+blur
+save flag-switzerland-blur.png
+
+load typical.jpg
+blur
+sepia
+sharpen
+save typical-blur-sepia.png

@@ -6,21 +6,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
+/**
+ * Implementation of IController. Reads in the given argument input text and parses it to perform
+ * model operations.
+ */
 public class Controller implements IController {
   private String inputFile;
   private ImageHandling imageHandling;
   private BufferedImage storedImage;
   private ImageGeneration imageGen = new ImageGeneration();
+  private ViewFrame view;
 
   public Controller(String inputFile) {
     this.inputFile = inputFile;
+
+    ViewFrame.setDefaultLookAndFeelDecorated(false);
+    view = new ViewFrame();
+
+    view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    view.setVisible(true);
   }
 
   @Override
   public void runProgram() throws IOException {
-    BufferedReader buffReader = new BufferedReader
-            (new InputStreamReader(new FileInputStream("../" + inputFile)));
+    BufferedReader buffReader = new BufferedReader(new InputStreamReader(
+            new FileInputStream("../" + inputFile)));
     String line;
     while ((line = buffReader.readLine()) != null) {
       String[] terms = line.split(" ");
@@ -71,6 +83,8 @@ public class Controller implements IController {
                   null, 0);
           imageHandling = new ImageModification(storedImage);
           break;
+        default:
+          break;
       }
     }
   }
@@ -120,6 +134,9 @@ public class Controller implements IController {
           case "switzerland":
             storedImage = imageHandling.createImage(GenerationType.FLAG,
                     Integer.parseInt(terms[2]), 0, FlagType.SWITZERLAND, 0);
+            break;
+          default:
+            System.err.println("Invalid flag.");
             break;
         }
         break;

@@ -1,5 +1,4 @@
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * Interface for all kinds of image handling, including both modification and generation.

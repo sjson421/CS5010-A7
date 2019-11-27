@@ -1,0 +1,33 @@
+load landscape.jpg
+blur
+save landscape-blur.jpg
+
+load landscape.jpg
+sharpen
+save landscape-sharpen.jpg
+
+load typical.jpg
+blur
+save typical-blur.jpg
+
+load typical.jpg
+sharpen
+save typical-sharpen.jpg
+
+horizontalrainbow 250 70
+save horizontal-rainbow.jpg
+
+verticalrainbow 70 500
+save vertical-rainbow.png
+
+checkerboard 20
+save checkerboard.jpg
+
+flag france 100
+save flag-france.jpg
+
+flag greece 100
+save flag-greece.jpg
+
+flag switzerland 100
+save flag-switzerland.jpg

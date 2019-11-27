@@ -1,9 +1,3 @@
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 /**
  * Abstract class for image handling, with functionalities that should be common to all forms of
  * image handling.

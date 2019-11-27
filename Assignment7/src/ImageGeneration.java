@@ -23,7 +23,7 @@ public class ImageGeneration extends AbstractImageHandling {
 
   private BufferedImage horRainbowStripes(int width, int height) {
     BufferedImage img = new BufferedImage(width, height * 7, BufferedImage.TYPE_INT_RGB);
-    for (int i = 0; i < height*7; i++) {
+    for (int i = 0; i < height * 7; i++) {
       for (int j = 0; j < width; j++) {
         if (i < height) {
           colorRed(img, j, i);
@@ -48,7 +48,7 @@ public class ImageGeneration extends AbstractImageHandling {
   private BufferedImage vertRainbowStripes(int width, int height) {
     BufferedImage img = new BufferedImage(width * 7, height, BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width*7; j++) {
+      for (int j = 0; j < width * 7; j++) {
         if (j < width) {
           colorRed(img, j, i);
         } else if (j < 2 * width) {
