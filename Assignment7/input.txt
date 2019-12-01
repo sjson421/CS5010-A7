@@ -19,7 +19,7 @@ dither
 save landscape-dither.jpg
 
 load landscape.jpg
-mosaic 500
+mosaic 15000
 save landscape-mosaic.jpg
 
 load typical.jpg
@@ -43,7 +43,7 @@ dither
 save typical-dither.jpg
 
 load typical.jpg
-mosaic 1000
+mosaic 20000
 save typical-mosaic.jpg
 
 horizontalrainbow 250 70
