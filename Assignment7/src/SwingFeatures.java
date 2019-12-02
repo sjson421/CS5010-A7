@@ -1,6 +1,6 @@
-import JFrame;
-import UIManager;
-import UnsupportedLookAndFeelException;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * This example shows the different user interface elements in Java Swing.
