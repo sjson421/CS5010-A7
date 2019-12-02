@@ -1,8 +1,20 @@
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
+/**
+ * JPanel for showing options for image generation.
+ */
 public class ImageGenerationPanel extends JPanel {
   private JButton checkerboardButton;
   private JButton horizontalRainbowButton;
@@ -22,6 +34,11 @@ public class ImageGenerationPanel extends JPanel {
   private JButton generateButton;
   private JButton selectedGen;
 
+  /**
+   * Constructor that uses a passed-down controller for button presses.
+   *
+   * @param c Controller passed down from the view to this panel, for calling after button presses.
+   */
   public ImageGenerationPanel(IController c) {
     components();
     controller = c;
@@ -417,7 +434,7 @@ public class ImageGenerationPanel extends JPanel {
 
     if (img != null) {
       try {
-        if (img.getWidth() > picSpace.getWidth()) {
+        if (img.getWidth() > picSpace.getWidth() && img.getHeight() > picSpace.getHeight()) {
           picSpace.setIcon(new ImageIcon(img.getScaledInstance(picSpace.getWidth(),
                   picSpace.getHeight(), Image.SCALE_SMOOTH)));
         } else if (img.getWidth() > picSpace.getWidth()) {

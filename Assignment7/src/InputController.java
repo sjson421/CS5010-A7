@@ -1,11 +1,8 @@
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import javax.imageio.ImageIO;
 
 /**
  * Implementation of IController. Reads in the given argument input text and parses it to perform
@@ -24,7 +21,7 @@ public class InputController extends AbstractController {
   @Override
   public void runProgram() throws IOException {
     BufferedReader buffReader = new BufferedReader(new InputStreamReader(
-            new FileInputStream("./" + inputFile)));
+            new FileInputStream(inputFile)));
     String line;
     while ((line = buffReader.readLine()) != null) {
       String[] terms = line.split(" ");
@@ -75,10 +72,10 @@ public class InputController extends AbstractController {
   private void handleMoreTerms(String line, String[] terms) throws IOException {
     switch (terms[0].toLowerCase()) {
       case "load":
-        imageHandling = load("./res/" + terms[1]);
+        imageHandling = load(terms[1]);
         break;
       case "save":
-        save(storedImage, "./" + terms[1]);
+        save(storedImage, terms[1]);
         break;
       //Modification
       case "mosaic":

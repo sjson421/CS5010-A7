@@ -1,10 +1,6 @@
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  * Implementation of IController. Connects to the view and gets its data to send to the model, and
@@ -15,7 +11,6 @@ public class FrameController extends AbstractController {
   private ImageModification imageMod;
   private BufferedImage storedImage;
   private ImageGeneration imageGen = new ImageGeneration();
-  private IView view;
 
   public FrameController() {
     View.setDefaultLookAndFeelDecorated(false);

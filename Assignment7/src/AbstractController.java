@@ -9,6 +9,8 @@ import javax.imageio.ImageIO;
  * are repeated in subclasses.
  */
 public abstract class AbstractController implements IController {
+  protected IView view;
+
   /**
    * Set by default to not have an associated view.
    *
@@ -16,6 +18,7 @@ public abstract class AbstractController implements IController {
    */
   @Override
   public void setView(IView v) {
+    view = v;
   }
 
   @Override

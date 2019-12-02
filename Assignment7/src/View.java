@@ -1,15 +1,26 @@
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JSplitPane;
+import javax.swing.GroupLayout;
+import javax.swing.UIManager;
+import javax.swing.BorderFactory;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 
+/**
+ * View implementation as JFrame that holds onto all panels as well as all functionalities, held
+ * under the other panels.
+ */
 public class View extends JFrame implements IView {
-  private JPanel ControlPanel;
-  private JSplitPane RightPanel;
-  private JPanel ViewPanel;
-  private JButton generateButon;
-  private JPanel jPanel1;
-  private JPanel jPanel3;
-  private JButton modificationButton;
+  private JSplitPane rightPanel;
   private IController controller;
 
+  /**
+   * Constructor using the given controller for passing back and forth data.
+   *
+   * @param c Controller associated with this view.
+   */
   public View(IController c) {
     addController(c);
     components();
@@ -22,31 +33,23 @@ public class View extends JFrame implements IView {
           break;
         }
       }
-    } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException | InstantiationException
+            | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+      java.util.logging.Logger.getLogger(
+              View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
-    java.awt.EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        setVisible(true);
-      }
-    });
+    setVisible(true);
   }
 
 
   private void components() {
-    jPanel3 = new JPanel();
-    ViewPanel = new JPanel();
-    RightPanel = new JSplitPane();
-    ControlPanel = new JPanel();
-    modificationButton = new JButton();
-    generateButon = new JButton();
-    jPanel1 = new JPanel();
+    JPanel jPanel3 = new JPanel();
+    JPanel viewPanel = new JPanel();
+    rightPanel = new JSplitPane();
+    JPanel controlPanel = new JPanel();
+    JButton modificationButton = new JButton();
+    JButton generateButon = new JButton();
+    JPanel jPanel1 = new JPanel();
 
     GroupLayout jPanel3Layout = new GroupLayout(jPanel3);
     jPanel3.setLayout(jPanel3Layout);
@@ -59,14 +62,14 @@ public class View extends JFrame implements IView {
                     .addGap(0, 100, Short.MAX_VALUE)
     );
 
-    GroupLayout ViewPanelLayout = new GroupLayout(ViewPanel);
-    ViewPanel.setLayout(ViewPanelLayout);
-    ViewPanelLayout.setHorizontalGroup(
-            ViewPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+    GroupLayout viewPanelLayout = new GroupLayout(viewPanel);
+    viewPanel.setLayout(viewPanelLayout);
+    viewPanelLayout.setHorizontalGroup(
+            viewPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGap(0, 500, Short.MAX_VALUE)
     );
-    ViewPanelLayout.setVerticalGroup(
-            ViewPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+    viewPanelLayout.setVerticalGroup(
+            viewPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGap(0, 500, Short.MAX_VALUE)
     );
 
@@ -74,22 +77,23 @@ public class View extends JFrame implements IView {
     setTitle("Image Processor");
     setAutoRequestFocus(false);
     setName("Main Panel");
-    setPreferredSize(new java.awt.Dimension(1440,720));
+    setPreferredSize(new java.awt.Dimension(1440, 720));
 
-    RightPanel.setBackground(new java.awt.Color(0, 0, 153));
-    RightPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    RightPanel.setFont(new java.awt.Font("Tahoma", 3, 13));
+    rightPanel.setBackground(new java.awt.Color(0, 0, 153));
+    rightPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    rightPanel.setFont(new java.awt.Font("Tahoma", 3, 13));
 
-    ControlPanel.setBackground(new java.awt.Color(0, 216, 230));
-    ControlPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    ControlPanel.setMaximumSize(new java.awt.Dimension(200, 900));
-    ControlPanel.setMinimumSize(new java.awt.Dimension(200, 900));
-    ControlPanel.setPreferredSize(new java.awt.Dimension(200, 900));
+    controlPanel.setBackground(new java.awt.Color(0, 216, 230));
+    controlPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    controlPanel.setMaximumSize(new java.awt.Dimension(200, 900));
+    controlPanel.setMinimumSize(new java.awt.Dimension(200, 900));
+    controlPanel.setPreferredSize(new java.awt.Dimension(200, 900));
 
     modificationButton.setBackground(new java.awt.Color(204, 204, 204));
     modificationButton.setFont(new java.awt.Font("Calibri", 1, 18));
     modificationButton.setText("Modify");
-    modificationButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    modificationButton.setBorder(BorderFactory.createBevelBorder(
+            javax.swing.border.BevelBorder.RAISED));
     modificationButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     modificationButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +104,8 @@ public class View extends JFrame implements IView {
     generateButon.setBackground(new java.awt.Color(204, 204, 204));
     generateButon.setFont(new java.awt.Font("Calibri", 1, 18));
     generateButon.setText("Generate");
-    generateButon.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    generateButon.setBorder(BorderFactory.createBevelBorder(
+            javax.swing.border.BevelBorder.RAISED));
     generateButon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     generateButon.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,16 +113,18 @@ public class View extends JFrame implements IView {
       }
     });
 
-    GroupLayout ControlPanelLayout = new GroupLayout(ControlPanel);
-    ControlPanel.setLayout(ControlPanelLayout);
-    ControlPanelLayout.setHorizontalGroup(
-            ControlPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(modificationButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(generateButon, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+    GroupLayout controlPanelLayout = new GroupLayout(controlPanel);
+    controlPanel.setLayout(controlPanelLayout);
+    controlPanelLayout.setHorizontalGroup(
+            controlPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(modificationButton, GroupLayout.DEFAULT_SIZE,
+                            GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(generateButon, GroupLayout.DEFAULT_SIZE,
+                            GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
-    ControlPanelLayout.setVerticalGroup(
-            ControlPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(ControlPanelLayout.createSequentialGroup()
+    controlPanelLayout.setVerticalGroup(
+            controlPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
                             .addGap(134, 134, 134)
                             .addComponent(modificationButton)
                             .addGap(70, 70, 70)
@@ -125,7 +132,7 @@ public class View extends JFrame implements IView {
                             .addGap(659, 659, 659))
     );
 
-    RightPanel.setLeftComponent(ControlPanel);
+    rightPanel.setLeftComponent(controlPanel);
 
     jPanel1.setName("Window");
     jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
@@ -141,21 +148,21 @@ public class View extends JFrame implements IView {
                     .addGap(0, 900, Short.MAX_VALUE)
     );
 
-    RightPanel.setRightComponent(jPanel1);
+    rightPanel.setRightComponent(jPanel1);
 
-    getContentPane().add(RightPanel, java.awt.BorderLayout.PAGE_START);
+    getContentPane().add(rightPanel, java.awt.BorderLayout.PAGE_START);
 
     pack();
   }
 
   private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {
     ImageGenerationPanel imageGeneration = new ImageGenerationPanel(controller);
-    RightPanel.setRightComponent(imageGeneration);
+    rightPanel.setRightComponent(imageGeneration);
   }
 
   private void modificationButtonActionPerformed(java.awt.event.ActionEvent evt) {
     ImageModificationPanel modificationPanel = new ImageModificationPanel(controller);
-    RightPanel.setRightComponent(modificationPanel);
+    rightPanel.setRightComponent(modificationPanel);
   }
 
 

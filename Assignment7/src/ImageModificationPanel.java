@@ -1,11 +1,25 @@
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.JFileChooser;
+import javax.swing.ImageIcon;
 
+
+/**
+ * JPanel for showing options for image modification.
+ */
 public class ImageModificationPanel extends JPanel {
   private JLabel uploadPicture;
   private JButton uploadButton;
@@ -22,6 +36,11 @@ public class ImageModificationPanel extends JPanel {
   private JButton selectedMod;
   private IController controller;
 
+  /**
+   * Constructor that uses a passed-down controller for button presses.
+   *
+   * @param c Controller passed down from the view to this panel, for calling after button presses.
+   */
   public ImageModificationPanel(IController c) {
     components();
     controller = c;
@@ -301,7 +320,7 @@ public class ImageModificationPanel extends JPanel {
     }
     if (img != null) {
       try {
-        if (img.getWidth() > picSpace.getWidth()) {
+        if (img.getWidth() > picSpace.getWidth() && img.getHeight() > picSpace.getHeight()) {
           picSpace.setIcon(new ImageIcon(img.getScaledInstance(picSpace.getWidth(),
                   picSpace.getHeight(), Image.SCALE_SMOOTH)));
         } else if (img.getWidth() > picSpace.getWidth()) {

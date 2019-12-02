@@ -2,8 +2,12 @@
 
 **How to use:**
 
-Run Driver.java or the given JAR file from the res folder. 
-The command to run the jar file will be, from the res folder, "java -jar assignment.jar \<input text file\>". Input files must be moved into the parent directory of src and res (so the main directory) in order for the program to run correctly.
+Run the given JAR file from the res folder.
+The command to run the jar file will be, from the res folder, "java -jar assignment.jar -script \<input text file\>" to run the program using an input text file, or "java -jar assignment.jar -interactive" to use the GUI.
+
+***Script:***
+
+By default, the JAR file assumes that the input files and images to be loaded are in the res folder when using the script.
 
 Images to modify by blurring, etc. are pre-loaded from the res folder, called landscape.jpg and typical.jpg. Input is from input.txt commands.
 
@@ -29,9 +33,16 @@ There are three input files in the res folder: input1.txt, input2.txt, and input
   * greece
   * switzerland
 
+***GUI:***
+
+The GUI is very intuitive and designed for users with no guidelines. Pressing one of the two buttons of "Modify" or "Generate" on the sidebar on the left
+will generate a panel where you can decide which operation you wish to perform. Once you click on the operation you want to perform, the input fields you require
+will show. Clicking on "Modify" or "Generate" using the highlighted operation will perform the cited operation. Multiple operations are possible in the case of
+modification, meaning that one can blur, sharpen, etc. multiple times on one image.
+
 **Parts of the program that are complete:**
 
-All parts of the program are complete, including all extra credits.
+All parts of the program are complete.
 
 * Blur
 * Sharpen
@@ -42,13 +53,13 @@ All parts of the program are complete, including all extra credits.
 * Horizontal rainbow
 * Vertical rainbow
 * Checkerboard
-* Flag of France
-* Flag of Greece
-* Flag of Switzerland
+* Flag of France (not included in GUI)
+* Flag of Greece (not included in GUI)
+* Flag of Switzerland (not included in GUI)
 
 **Design Changes:**
 
-No large changes in design were necessary, other than the slight change in the interface of ImageHandling.java for the additional parameter of "seeds" when mosaicing.
+No large changes in design were necessary. Only a change in pathing from the script file was necessary from previous code.
 
 **Citations:**
 

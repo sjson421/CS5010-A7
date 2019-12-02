@@ -1,31 +1,31 @@
-load landscape.jpg
+load ./landscape.jpg
 greyscale
-save landscape-greyscale.jpg
+save ./landscape-greyscale.jpg
 
-load landscape.jpg
+load ./landscape.jpg
 sepia
-save landscape-sepia.jpg
+save ./landscape-sepia.jpg
 
-load landscape.jpg
+load ./landscape.jpg
 dither
-save landscape-dither.jpg
+save ./landscape-dither.jpg
 
-load landscape.jpg
+load ./landscape.jpg
 mosaic 500
-save landscape-mosaic.jpg
+save ./landscape-mosaic.jpg
 
-load typical.jpg
+load ./typical.jpg
 greyscale
-save typical-greyscale.jpg
+save ./typical-greyscale.jpg
 
-load typical.jpg
+load ./typical.jpg
 sepia
-save typical-sepia.jpg
+save ./typical-sepia.jpg
 
-load typical.jpg
+load ./typical.jpg
 dither
-save typical-dither.jpg
+save ./typical-dither.jpg
 
-load typical.jpg
+load ./typical.jpg
 mosaic 1000
-save typical-mosaic.jpg
+save ./typical-mosaic.jpg

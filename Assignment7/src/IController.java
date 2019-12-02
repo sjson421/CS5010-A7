@@ -55,25 +55,30 @@ public interface IController {
 
   /**
    * Used for the view to generate horizontal rainbow stripes.
-   * @param width Width of the image.
+   *
+   * @param width  Width of the image.
    * @param height Height of the stripe.
    */
   BufferedImage horRainbow(int width, int height);
+
   /**
    * Used for the view to generate vertical rainbow stripes.
-   * @param width Width of the stripe.
+   *
+   * @param width  Width of the stripe.
    * @param height Height of the image.
    */
   BufferedImage vertRainbow(int width, int height);
 
   /**
    * Used for the view to generate a checkerboard.
+   *
    * @param width Width of a square of the checkerboard.
    */
   BufferedImage checkerboard(int width);
 
   /**
    * Loads an image for modification.
+   *
    * @param inputPath Path to find image for modifying.
    * @return ImageModification Object holding the image to modify.
    * @throws IOException Thrown when input path not found.
@@ -82,6 +87,7 @@ public interface IController {
 
   /**
    * Saves an image that has been modified or generated.
+   *
    * @param outputPath Output path of modified image.
    */
   void save(BufferedImage image, String outputPath) throws IOException;
