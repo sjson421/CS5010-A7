@@ -8,29 +8,29 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JColorChooser;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import BorderFactory;
+import BoxLayout;
+import ButtonGroup;
+import DefaultListModel;
+import ImageIcon;
+import JButton;
+import JCheckBox;
+import JColorChooser;
+import JComboBox;
+import JFileChooser;
+import JFrame;
+import JLabel;
+import JList;
+import JOptionPane;
+import JPanel;
+import JPasswordField;
+import JRadioButton;
+import JScrollPane;
+import JTextArea;
+import ListSelectionModel;
+import event.ListSelectionEvent;
+import event.ListSelectionListener;
+import filechooser.FileNameExtensionFilter;
 
 /**
  * This class opens the main window, that has different elements illustrated in
@@ -84,7 +84,6 @@ public class SwingFeaturesFrame extends JFrame implements ActionListener, ItemLi
     mainPanel.add(scrollPane);
 
     //password fields
-
     JPanel pPanel = new JPanel();
     pPanel.setBorder(BorderFactory.createTitledBorder("Using Password fields"));
     mainPanel.add(pPanel);

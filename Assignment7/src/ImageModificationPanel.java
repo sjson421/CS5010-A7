@@ -1,13 +1,9 @@
 import java.awt.Image;
 import java.io.File;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JOptionPane;
-import javax.swing.JFileChooser;
-import javax.swing.ImageIcon;
 
-public class ImageModificationPanel extends javax.swing.JPanel {
+import javax.swing.*;
+
+public class ImageModificationPanel extends JPanel {
   private JLabel ImageModificationPanel;
   private JLabel SelectImageModTypeLabel;
   private JLabel UploadPicture;
@@ -35,20 +31,20 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
   private void componenets() {
 
-    ImageModificationPanel = new javax.swing.JLabel();
-    SelectImageModTypeLabel = new javax.swing.JLabel();
-    modifyJButton = new javax.swing.JButton();
-    Uploadbutton = new javax.swing.JButton();
-    UploadPicture = new javax.swing.JLabel();
-    blurButton = new javax.swing.JButton();
-    sepiaButton = new javax.swing.JButton();
-    sharpenButton = new javax.swing.JButton();
-    grayScaleButton = new javax.swing.JButton();
-    ditherButton = new javax.swing.JButton();
-    mosaicButton = new javax.swing.JButton();
-    enterSeeds = new javax.swing.JLabel();
-    seedTextField = new javax.swing.JTextField();
-    picSpace = new javax.swing.JLabel();
+    ImageModificationPanel = new JLabel();
+    SelectImageModTypeLabel = new JLabel();
+    modifyJButton = new JButton();
+    Uploadbutton = new JButton();
+    UploadPicture = new JLabel();
+    blurButton = new JButton();
+    sepiaButton = new JButton();
+    sharpenButton = new JButton();
+    grayScaleButton = new JButton();
+    ditherButton = new JButton();
+    mosaicButton = new JButton();
+    enterSeeds = new JLabel();
+    seedTextField = new JTextField();
+    picSpace = new JLabel();
 
     setBackground(new java.awt.Color(255, 255, 255));
     setForeground(new java.awt.Color(240, 240, 240));
@@ -64,7 +60,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     modifyJButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
     modifyJButton.setText("Modify");
-    modifyJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    modifyJButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     modifyJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     modifyJButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +70,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     Uploadbutton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
     Uploadbutton.setText("Upload");
-    Uploadbutton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    Uploadbutton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     Uploadbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     Uploadbutton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +84,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     blurButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
     blurButton.setText("Blur");
-    blurButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    blurButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     blurButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     blurButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +94,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     sepiaButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
     sepiaButton.setText("Sepia");
-    sepiaButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    sepiaButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     sepiaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     sepiaButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +104,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     sharpenButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
     sharpenButton.setText("Sharpen");
-    sharpenButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    sharpenButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     sharpenButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     sharpenButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +114,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     grayScaleButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
     grayScaleButton.setText("Greyscale");
-    grayScaleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    grayScaleButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     grayScaleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     grayScaleButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +124,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     ditherButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
     ditherButton.setText("Dither");
-    ditherButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ditherButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     ditherButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     ditherButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +134,7 @@ public class ImageModificationPanel extends javax.swing.JPanel {
 
     mosaicButton.setFont(new java.awt.Font("SansSerif", 0, 20));
     mosaicButton.setText("Mosaic");
-    mosaicButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    mosaicButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     mosaicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     mosaicButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,72 +149,72 @@ public class ImageModificationPanel extends javax.swing.JPanel {
     picSpace.setBackground(new java.awt.Color(255, 255, 255));
     picSpace.setFont(new java.awt.Font("SansSerif", 0, 20));
 
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    GroupLayout layout = new GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                             .addGap(473, 473, 473)
                             .addComponent(ImageModificationPanel)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                             .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                             .addComponent(SelectImageModTypeLabel)
                                             .addGap(194, 852, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(blurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(sepiaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(sharpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(grayScaleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(mosaicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                    .addComponent(blurButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(sepiaButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(sharpenButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(grayScaleButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(mosaicButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(UploadPicture)
-                                                    .addComponent(Uploadbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(Uploadbutton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(enterSeeds)
-                                                            .addComponent(modifyJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                                            .addComponent(modifyJButton, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                                                             .addComponent(seedTextField))
-                                                    .addComponent(ditherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(ditherButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
                                             .addGap(77, 77, 77)
-                                            .addComponent(picSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(picSpace, GroupLayout.PREFERRED_SIZE, 743, GroupLayout.PREFERRED_SIZE)
                                             .addGap(0, 0, Short.MAX_VALUE))))
     );
     layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(ImageModificationPanel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(SelectImageModTypeLabel)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                             .addGap(15, 15, 15)
-                                            .addComponent(blurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(sepiaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(sharpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(grayScaleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(ditherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(mosaicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(blurButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(sepiaButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(sharpenButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(grayScaleButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(ditherButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(mosaicButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(UploadPicture)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(Uploadbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(Uploadbutton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(enterSeeds)
                                             .addGap(8, 8, 8)
-                                            .addComponent(seedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(modifyJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(seedTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(modifyJButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(picSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)))
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(picSpace, GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)))
                             .addContainerGap())
     );
   }
