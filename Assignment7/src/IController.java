@@ -24,53 +24,53 @@ public interface IController {
   /**
    * Used for the view to blur an image.
    */
-  void blur();
+  BufferedImage blur();
 
   /**
    * Used for the view to sharpen an image.
    */
-  void sharpen();
+  BufferedImage sharpen();
 
   /**
    * Used for the view to greyscale an image.
    */
-  void greyscale();
+  BufferedImage greyscale();
 
   /**
    * Used for the view to set an image to sepia tone.
    */
-  void sepia();
+  BufferedImage sepia();
 
   /**
    * Used for the view to dither an image.
    */
-  void dither();
+  BufferedImage dither();
 
   /**
    * Used for the view to mosaic an image.
    *
    * @param seeds Number of seeds to mosaic the image by.
    */
-  void mosaic(int seeds);
+  BufferedImage mosaic(int seeds);
 
   /**
    * Used for the view to generate horizontal rainbow stripes.
    * @param width Width of the image.
    * @param height Height of the stripe.
    */
-  void horRainbow(int width, int height);
+  BufferedImage horRainbow(int width, int height);
   /**
    * Used for the view to generate vertical rainbow stripes.
    * @param width Width of the stripe.
    * @param height Height of the image.
    */
-  void vertRainbow(int width, int height);
+  BufferedImage vertRainbow(int width, int height);
 
   /**
    * Used for the view to generate a checkerboard.
    * @param width Width of a square of the checkerboard.
    */
-  void checkerboard(int width);
+  BufferedImage checkerboard(int width);
 
   /**
    * Loads an image for modification.

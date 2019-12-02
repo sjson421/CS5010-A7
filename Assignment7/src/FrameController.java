@@ -28,62 +28,70 @@ public class FrameController extends AbstractController {
 
   @Override
   public void runProgram() {
-    setView(new View());
+    setView(view);
   }
 
   @Override
-  public void blur() {
+  public BufferedImage blur() {
     storedImage = imageMod.createImage(ModType.BLUR, 0, 0,null, 0);
     imageMod = new ImageModification(storedImage);
-    //TODO: Show storedImage on the image panel
+    return storedImage;
   }
 
   @Override
-  public void sharpen() {
+  public BufferedImage sharpen() {
     storedImage = imageMod.createImage(ModType.SHARPEN, 0, 0,null, 0);
     imageMod = new ImageModification(storedImage);
+    return storedImage;
   }
 
   @Override
-  public void greyscale() {
+  public BufferedImage greyscale() {
     storedImage = imageMod.createImage(ModType.GREYSCALE, 0, 0,null, 0);
     imageMod = new ImageModification(storedImage);
+    return storedImage;
   }
 
   @Override
-  public void sepia() {
+  public BufferedImage sepia() {
     storedImage = imageMod.createImage(ModType.SEPIA, 0, 0,null, 0);
     imageMod = new ImageModification(storedImage);
+    return storedImage;
   }
 
   @Override
-  public void dither() {
+  public BufferedImage dither() {
     storedImage = imageMod.createImage(ModType.DITHER, 0, 0,null, 0);
     imageMod = new ImageModification(storedImage);
+    return storedImage;
   }
 
   @Override
-  public void mosaic(int seeds) {
+  public BufferedImage mosaic(int seeds) {
     storedImage = imageMod.createImage(ModType.MOSAIC, 0, 0,null, seeds);
     imageMod = new ImageModification(storedImage);
+    return storedImage;
   }
 
   @Override
-  public void horRainbow(int width, int height) {
+  public BufferedImage horRainbow(int width, int height) {
     storedImage = imageGen.createImage(GenerationType.HOR_RAINBOW_STRIPES,
             width, height, null, 0);
+    return storedImage;
   }
 
   @Override
-  public void vertRainbow(int width, int height) {
+  public BufferedImage vertRainbow(int width, int height) {
     storedImage = imageGen.createImage(GenerationType.VERT_RAINBOW_STRIPES,
             width, height, null, 0);
+    return storedImage;
   }
 
   @Override
-  public void checkerboard(int width) {
+  public BufferedImage checkerboard(int width) {
     storedImage = imageGen.createImage(GenerationType.CHECKERBOARD,
             width, 0, null, 0);
+    return storedImage;
   }
 
   @Override

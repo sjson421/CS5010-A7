@@ -19,7 +19,7 @@ public class Driver {
         c.runProgram();
       } else if (args[0].equals("-interactive") && args.length == 1) {
         c = new FrameController();
-        IView view = new View();
+        IView view = new View(c);
         c.setView(view);
         c.runProgram();
       } else {

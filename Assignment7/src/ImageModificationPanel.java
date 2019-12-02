@@ -1,13 +1,16 @@
-import java.awt.Image;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class ImageModificationPanel extends JPanel {
   private JLabel ImageModificationPanel;
   private JLabel SelectImageModTypeLabel;
   private JLabel UploadPicture;
-  private JButton Uploadbutton;
+  private JButton UploadButton;
   private JButton blurButton;
   private JButton ditherButton;
   private JLabel enterSeeds;
@@ -18,23 +21,25 @@ public class ImageModificationPanel extends JPanel {
   private JTextField seedTextField;
   private JButton sepiaButton;
   private JButton sharpenButton;
+  private JButton selectedMod;
+  private IController controller;
 
-  public ImageModificationPanel() {
-    componenets();
+  public ImageModificationPanel(IController c) {
+    components();
+    controller = c;
     UploadPicture.setVisible(false);
-    Uploadbutton.setVisible(false);
+    UploadButton.setVisible(false);
     modifyJButton.setVisible(false);
     enterSeeds.setVisible(false);
     seedTextField.setVisible(false);
   }
 
 
-  private void componenets() {
-
+  private void components() {
     ImageModificationPanel = new JLabel();
     SelectImageModTypeLabel = new JLabel();
     modifyJButton = new JButton();
-    Uploadbutton = new JButton();
+    UploadButton = new JButton();
     UploadPicture = new JLabel();
     blurButton = new JButton();
     sepiaButton = new JButton();
@@ -50,11 +55,11 @@ public class ImageModificationPanel extends JPanel {
     setForeground(new java.awt.Color(240, 240, 240));
 
     ImageModificationPanel.setBackground(new java.awt.Color(153, 0, 153));
-    ImageModificationPanel.setFont(new java.awt.Font("Calibri", 1, 36));
+    ImageModificationPanel.setFont(new java.awt.Font("SansSerif", 0, 36));
     ImageModificationPanel.setForeground(new java.awt.Color(153, 153, 153));
     ImageModificationPanel.setText("Image Modification");
 
-    SelectImageModTypeLabel.setFont(new java.awt.Font("Calibri", 1, 28));
+    SelectImageModTypeLabel.setFont(new java.awt.Font("SansSerif", 0, 28));
     SelectImageModTypeLabel.setForeground(new java.awt.Color(153, 153, 153));
     SelectImageModTypeLabel.setText("Select Image Modification Type:");
 
@@ -68,17 +73,21 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    Uploadbutton.setFont(new java.awt.Font("SansSerif", 0, 20));
-    Uploadbutton.setText("Upload");
-    Uploadbutton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    Uploadbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    Uploadbutton.addActionListener(new java.awt.event.ActionListener() {
+    UploadButton.setFont(new java.awt.Font("SansSerif", 0, 20));
+    UploadButton.setText("Upload");
+    UploadButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    UploadButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    UploadButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        UploadbuttonActionPerformed(evt);
+        try {
+          UploadButtonActionPerformed(evt);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       }
     });
 
-    UploadPicture.setFont(new java.awt.Font("Calibri", 1, 24));
+    UploadPicture.setFont(new java.awt.Font("SansSerif", 0, 24));
     UploadPicture.setForeground(new java.awt.Color(153, 153, 153));
     UploadPicture.setText("Upload Picture:");
 
@@ -142,7 +151,7 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    enterSeeds.setFont(new java.awt.Font("Calibri", 1, 24));
+    enterSeeds.setFont(new java.awt.Font("SansSerif", 0, 24));
     enterSeeds.setForeground(new java.awt.Color(153, 153, 153));
     enterSeeds.setText("Enter Seeds:");
 
@@ -166,12 +175,12 @@ public class ImageModificationPanel extends JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                     .addComponent(blurButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(sepiaButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(sharpenButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(sepiaButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(grayScaleButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(mosaicButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(UploadPicture)
-                                                    .addComponent(Uploadbutton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(UploadButton, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(enterSeeds)
                                                             .addComponent(modifyJButton, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -193,9 +202,9 @@ public class ImageModificationPanel extends JPanel {
                                             .addGap(15, 15, 15)
                                             .addComponent(blurButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(sepiaButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(sharpenButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(sepiaButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(grayScaleButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
@@ -205,7 +214,7 @@ public class ImageModificationPanel extends JPanel {
                                             .addGap(18, 18, 18)
                                             .addComponent(UploadPicture)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(Uploadbutton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(UploadButton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(enterSeeds)
                                             .addGap(8, 8, 8)
@@ -220,53 +229,119 @@ public class ImageModificationPanel extends JPanel {
   }
 
   private void modifyJButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    String modText = selectedMod.getText().toLowerCase();
+    BufferedImage img = null;
 
-    JOptionPane.showMessageDialog(null, "Information Created Successfully");
+    switch (modText) {
+      case "blur":
+        img = controller.blur();
+        break;
+      case "sharpen":
+        img = controller.sharpen();
+        break;
+      case "sepia":
+        img = controller.sepia();
+        break;
+      case "greyscale":
+        img = controller.greyscale();
+        break;
+      case "dither":
+        img = controller.dither();
+        break;
+      case "mosaic":
+        img = controller.mosaic(Integer.parseInt(seedTextField.getText()));
+        break;
+      default:
+        break;
+    }
+    if (img != null) {
+      picSpace.setIcon(new ImageIcon(img.getScaledInstance(picSpace.getWidth(),
+              picSpace.getHeight(), Image.SCALE_SMOOTH)));
+    }
   }
 
-  private void UploadbuttonActionPerformed(java.awt.event.ActionEvent evt) {
+  private void UploadButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
     JFileChooser choose = new JFileChooser();
     choose.showOpenDialog(null);
     File file = choose.getSelectedFile();
     if (file != null) {
-      String img_path = file.getAbsolutePath();
-      ImageIcon icon = new ImageIcon(img_path);
-      Image img = icon.getImage();
+      String imgPath = file.getAbsolutePath();
+      Image img = ImageIO.read(file).getScaledInstance(picSpace.getWidth(),
+              picSpace.getHeight(), Image.SCALE_SMOOTH);
+      ImageIcon icon = new ImageIcon(img);
       picSpace.setIcon(icon);
+      controller.load(imgPath);
       modifyJButton.setVisible(true);
     }
   }
 
   private void blurButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    clearButtons();
+    blurButton.setBackground(Color.YELLOW);
+    selectedMod = blurButton;
     UploadPicture.setVisible(true);
-    Uploadbutton.setVisible(true);
-  }
-
-  private void sepiaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    UploadPicture.setVisible(true);
-    Uploadbutton.setVisible(true);
+    UploadButton.setVisible(true);
+    enterSeeds.setVisible(false);
+    seedTextField.setVisible(false);
   }
 
   private void sharpenButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    clearButtons();
+    sharpenButton.setBackground(Color.YELLOW);
+    selectedMod = sharpenButton;
     UploadPicture.setVisible(true);
-    Uploadbutton.setVisible(true);
+    UploadButton.setVisible(true);
+    enterSeeds.setVisible(false);
+    seedTextField.setVisible(false);
+  }
+
+  private void sepiaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    clearButtons();
+    sepiaButton.setBackground(Color.YELLOW);
+    selectedMod = sepiaButton;
+    UploadPicture.setVisible(true);
+    UploadButton.setVisible(true);
+    enterSeeds.setVisible(false);
+    seedTextField.setVisible(false);
   }
 
   private void grayScaleButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    clearButtons();
+    grayScaleButton.setBackground(Color.YELLOW);
+    selectedMod = grayScaleButton;
     UploadPicture.setVisible(true);
-    Uploadbutton.setVisible(true);
+    UploadButton.setVisible(true);
+    enterSeeds.setVisible(false);
+    seedTextField.setVisible(false);
   }
 
   private void ditherButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    clearButtons();
+    ditherButton.setBackground(Color.YELLOW);
+    selectedMod = ditherButton;
     UploadPicture.setVisible(true);
-    Uploadbutton.setVisible(true);
+    UploadButton.setVisible(true);
+    enterSeeds.setVisible(false);
+    seedTextField.setVisible(false);
   }
 
   private void mosaicButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    clearButtons();
+    mosaicButton.setBackground(Color.YELLOW);
+    selectedMod = mosaicButton;
     UploadPicture.setVisible(true);
-    Uploadbutton.setVisible(true);
+    UploadButton.setVisible(true);
     modifyJButton.setVisible(true);
     enterSeeds.setVisible(true);
     seedTextField.setVisible(true);
+  }
+
+  private void clearButtons() {
+    blurButton.setBackground(Color.LIGHT_GRAY);
+    sharpenButton.setBackground(Color.LIGHT_GRAY);
+    sepiaButton.setBackground(Color.LIGHT_GRAY);
+    grayScaleButton.setBackground(Color.LIGHT_GRAY);
+    ditherButton.setBackground(Color.LIGHT_GRAY);
+    mosaicButton.setBackground(Color.LIGHT_GRAY);
   }
 }

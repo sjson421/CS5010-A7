@@ -10,7 +10,8 @@ public class View extends JFrame implements IView {
   private JButton modificationButton;
   private IController controller;
 
-  public View() {
+  public View(IController c) {
+    addController(c);
     components();
     setResizable(false);
 
@@ -62,11 +63,11 @@ public class View extends JFrame implements IView {
     ViewPanel.setLayout(ViewPanelLayout);
     ViewPanelLayout.setHorizontalGroup(
             ViewPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGap(0, 537, Short.MAX_VALUE)
+                    .addGap(0, 500, Short.MAX_VALUE)
     );
     ViewPanelLayout.setVerticalGroup(
             ViewPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGap(0, 488, Short.MAX_VALUE)
+                    .addGap(0, 500, Short.MAX_VALUE)
     );
 
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -147,13 +148,12 @@ public class View extends JFrame implements IView {
   }
 
   private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    ImageGenerationPanel imageGeneration = new ImageGenerationPanel();
+    ImageGenerationPanel imageGeneration = new ImageGenerationPanel(controller);
     RightPanel.setRightComponent(imageGeneration);
   }
 
   private void modificationButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-    ImageModificationPanel modificationPanel = new ImageModificationPanel();
+    ImageModificationPanel modificationPanel = new ImageModificationPanel(controller);
     RightPanel.setRightComponent(modificationPanel);
   }
 

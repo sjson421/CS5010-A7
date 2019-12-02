@@ -19,48 +19,48 @@ public abstract class AbstractController implements IController {
   }
 
   @Override
-  public void blur() {
-
+  public BufferedImage blur() {
+    return null;
   }
 
   @Override
-  public void sharpen() {
-
+  public BufferedImage sharpen() {
+    return null;
   }
 
   @Override
-  public void greyscale() {
-
+  public BufferedImage greyscale() {
+    return null;
   }
 
   @Override
-  public void sepia() {
-
+  public BufferedImage sepia() {
+    return null;
   }
 
   @Override
-  public void dither() {
-
+  public BufferedImage dither() {
+    return null;
   }
 
   @Override
-  public void mosaic(int seeds) {
-
+  public BufferedImage mosaic(int seeds) {
+    return null;
   }
 
   @Override
-  public void horRainbow(int width, int height) {
-
+  public BufferedImage horRainbow(int width, int height) {
+    return null;
   }
 
   @Override
-  public void vertRainbow(int width, int height) {
-
+  public BufferedImage vertRainbow(int width, int height) {
+    return null;
   }
 
   @Override
-  public void checkerboard(int width) {
-
+  public BufferedImage checkerboard(int width) {
+    return null;
   }
 
   @Override
