@@ -74,6 +74,7 @@ public class View extends JFrame implements IView {
     setTitle("Image Processor");
     setAutoRequestFocus(false);
     setName("Main Panel");
+    setPreferredSize(new java.awt.Dimension(1440,720));
 
     RightPanel.setBackground(new java.awt.Color(0, 0, 153));
     RightPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 /**
  * Implementation of IController. Connects to the view and gets its data to send to the model, and
@@ -33,42 +34,44 @@ public class FrameController extends AbstractController {
 
   @Override
   public BufferedImage blur() {
-    storedImage = imageMod.createImage(ModType.BLUR, 0, 0,null, 0);
+    storedImage = imageMod.createImage(ModType.BLUR, 0, 0, null, 0);
     imageMod = new ImageModification(storedImage);
     return storedImage;
   }
 
   @Override
   public BufferedImage sharpen() {
-    storedImage = imageMod.createImage(ModType.SHARPEN, 0, 0,null, 0);
+    storedImage = imageMod.createImage(ModType.SHARPEN, 0, 0, null, 0);
     imageMod = new ImageModification(storedImage);
     return storedImage;
   }
 
   @Override
   public BufferedImage greyscale() {
-    storedImage = imageMod.createImage(ModType.GREYSCALE, 0, 0,null, 0);
+    storedImage = imageMod.createImage(ModType.GREYSCALE, 0, 0, null, 0);
     imageMod = new ImageModification(storedImage);
     return storedImage;
   }
 
   @Override
   public BufferedImage sepia() {
-    storedImage = imageMod.createImage(ModType.SEPIA, 0, 0,null, 0);
+    storedImage = imageMod.createImage(ModType.SEPIA, 0, 0, null, 0);
     imageMod = new ImageModification(storedImage);
     return storedImage;
   }
 
   @Override
   public BufferedImage dither() {
-    storedImage = imageMod.createImage(ModType.DITHER, 0, 0,null, 0);
+    storedImage = imageMod.createImage(ModType.DITHER, 0, 0, null, 0);
     imageMod = new ImageModification(storedImage);
     return storedImage;
   }
 
   @Override
   public BufferedImage mosaic(int seeds) {
-    storedImage = imageMod.createImage(ModType.MOSAIC, 0, 0,null, seeds);
+    JOptionPane.showMessageDialog(null,
+            "Mosaic operation in progress. Sit tight.");
+    storedImage = imageMod.createImage(ModType.MOSAIC, 0, 0, null, seeds);
     imageMod = new ImageModification(storedImage);
     return storedImage;
   }
