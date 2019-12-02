@@ -19,6 +19,7 @@ public class ImageGenerationPanel extends JPanel {
   private JTextField stripeHeightTextField;
   private JButton verticalRainbowButton;
   private IController controller;
+  private JButton generateButton;
   private JButton selectedGen;
 
   public ImageGenerationPanel(IController c) {
@@ -34,11 +35,11 @@ public class ImageGenerationPanel extends JPanel {
     imageHeightTextField.setVisible(false);
     squareWidthLabel.setVisible(false);
     squareWidthTextField.setVisible(false);
+    generateButton.setVisible(false);
   }
 
 
   private void components() {
-
     JPanel jPanel1 = new JPanel();
     JLabel imageGenerationLabel = new JLabel();
     JLabel selectImageGenerationTypeLabel = new JLabel();
@@ -56,7 +57,7 @@ public class ImageGenerationPanel extends JPanel {
     imageHeightLabel = new JLabel();
     imageHeightTextField = new JTextField();
     picSpace = new JLabel();
-    JButton generateButton = new JButton();
+    generateButton = new JButton();
 
     setBackground(new java.awt.Color(255, 255, 255));
 
@@ -352,6 +353,7 @@ public class ImageGenerationPanel extends JPanel {
     squareWidthTextField.setVisible(true);
     checkerboardButton.setBackground(Color.YELLOW);
     selectedGen = checkerboardButton;
+    generateButton.setVisible(true);
   }
 
   private void verticalRainbowButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,6 +370,7 @@ public class ImageGenerationPanel extends JPanel {
     imageHeightTextField.setVisible(true);
     verticalRainbowButton.setBackground(Color.YELLOW);
     selectedGen = verticalRainbowButton;
+    generateButton.setVisible(true);
   }
 
   private void horizontalRainbowButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,6 +387,7 @@ public class ImageGenerationPanel extends JPanel {
     squareWidthTextField.setVisible(false);
     horizontalRainbowButton.setBackground(Color.YELLOW);
     selectedGen = horizontalRainbowButton;
+    generateButton.setVisible(true);
   }
 
   private void generateJButtonActionPerformed(java.awt.event.ActionEvent evt) {
