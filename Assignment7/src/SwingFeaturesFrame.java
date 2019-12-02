@@ -8,29 +8,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 
-import BorderFactory;
-import BoxLayout;
-import ButtonGroup;
-import DefaultListModel;
-import ImageIcon;
-import JButton;
-import JCheckBox;
-import JColorChooser;
-import JComboBox;
-import JFileChooser;
-import JFrame;
-import JLabel;
-import JList;
-import JOptionPane;
-import JPanel;
-import JPasswordField;
-import JRadioButton;
-import JScrollPane;
-import JTextArea;
-import ListSelectionModel;
-import event.ListSelectionEvent;
-import event.ListSelectionListener;
-import filechooser.FileNameExtensionFilter;
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * This class opens the main window, that has different elements illustrated in

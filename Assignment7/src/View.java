@@ -72,11 +72,11 @@ public class View extends JFrame implements IView {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setTitle("Image Processor");
     setAutoRequestFocus(false);
-    setName("Main Panel"); // NOI18N
+    setName("Main Panel");
 
     RightPanel.setBackground(new java.awt.Color(0, 0, 153));
     RightPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    RightPanel.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+    RightPanel.setFont(new java.awt.Font("Tahoma", 3, 13));
 
     ControlPanel.setBackground(new java.awt.Color(0, 216, 230));
     ControlPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -85,7 +85,7 @@ public class View extends JFrame implements IView {
     ControlPanel.setPreferredSize(new java.awt.Dimension(200, 900));
 
     modificationButton.setBackground(new java.awt.Color(204, 204, 204));
-    modificationButton.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+    modificationButton.setFont(new java.awt.Font("Calibri", 1, 18));
     modificationButton.setText("Modify");
     modificationButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     modificationButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -96,7 +96,7 @@ public class View extends JFrame implements IView {
     });
 
     generateButon.setBackground(new java.awt.Color(204, 204, 204));
-    generateButon.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+    generateButon.setFont(new java.awt.Font("Calibri", 1, 18));
     generateButon.setText("Generate");
     generateButon.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     generateButon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -125,7 +125,7 @@ public class View extends JFrame implements IView {
 
     RightPanel.setLeftComponent(ControlPanel);
 
-    jPanel1.setName("Window"); // NOI18N
+    jPanel1.setName("Window");
     jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
 
     GroupLayout jPanel1Layout = new GroupLayout(jPanel1);

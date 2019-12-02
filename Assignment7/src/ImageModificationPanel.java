@@ -50,15 +50,15 @@ public class ImageModificationPanel extends JPanel {
     setForeground(new java.awt.Color(240, 240, 240));
 
     ImageModificationPanel.setBackground(new java.awt.Color(153, 0, 153));
-    ImageModificationPanel.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+    ImageModificationPanel.setFont(new java.awt.Font("Calibri", 1, 36));
     ImageModificationPanel.setForeground(new java.awt.Color(153, 153, 153));
     ImageModificationPanel.setText("Image Modification");
 
-    SelectImageModTypeLabel.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
+    SelectImageModTypeLabel.setFont(new java.awt.Font("Calibri", 1, 28));
     SelectImageModTypeLabel.setForeground(new java.awt.Color(153, 153, 153));
     SelectImageModTypeLabel.setText("Select Image Modification Type:");
 
-    modifyJButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+    modifyJButton.setFont(new java.awt.Font("SansSerif", 0, 20));
     modifyJButton.setText("Modify");
     modifyJButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     modifyJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -68,7 +68,7 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    Uploadbutton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+    Uploadbutton.setFont(new java.awt.Font("SansSerif", 0, 20));
     Uploadbutton.setText("Upload");
     Uploadbutton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     Uploadbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -78,11 +78,11 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    UploadPicture.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+    UploadPicture.setFont(new java.awt.Font("Calibri", 1, 24));
     UploadPicture.setForeground(new java.awt.Color(153, 153, 153));
     UploadPicture.setText("Upload Picture:");
 
-    blurButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+    blurButton.setFont(new java.awt.Font("SansSerif", 0, 20));
     blurButton.setText("Blur");
     blurButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     blurButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -92,7 +92,7 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    sepiaButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+    sepiaButton.setFont(new java.awt.Font("SansSerif", 0, 20));
     sepiaButton.setText("Sepia");
     sepiaButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     sepiaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -102,7 +102,7 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    sharpenButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+    sharpenButton.setFont(new java.awt.Font("SansSerif", 0, 20));
     sharpenButton.setText("Sharpen");
     sharpenButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     sharpenButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,7 +112,7 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    grayScaleButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+    grayScaleButton.setFont(new java.awt.Font("SansSerif", 0, 20));
     grayScaleButton.setText("Greyscale");
     grayScaleButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     grayScaleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -122,7 +122,7 @@ public class ImageModificationPanel extends JPanel {
       }
     });
 
-    ditherButton.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+    ditherButton.setFont(new java.awt.Font("SansSerif", 0, 20));
     ditherButton.setText("Dither");
     ditherButton.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     ditherButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
