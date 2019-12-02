@@ -255,8 +255,18 @@ public class ImageModificationPanel extends JPanel {
         break;
     }
     if (img != null) {
-      picSpace.setIcon(new ImageIcon(img.getScaledInstance(picSpace.getWidth(),
-              picSpace.getHeight(), Image.SCALE_SMOOTH)));
+      if (img.getWidth() > picSpace.getWidth()) {
+        picSpace.setIcon(new ImageIcon(img.getScaledInstance(picSpace.getWidth(),
+                picSpace.getHeight(), Image.SCALE_SMOOTH)));
+      } else if (img.getWidth() > picSpace.getWidth()) {
+        picSpace.setIcon(new ImageIcon(img.getScaledInstance(picSpace.getWidth(),
+                img.getHeight(), Image.SCALE_SMOOTH)));
+      } else if (img.getHeight() > picSpace.getHeight()) {
+        picSpace.setIcon(new ImageIcon(img.getScaledInstance(img.getWidth(),
+                picSpace.getHeight(), Image.SCALE_SMOOTH)));
+      } else {
+        picSpace.setIcon(new ImageIcon(img));
+      }
     }
   }
 
